@@ -1,3 +1,11 @@
+[tool.black]
+exclude = '''
+/(
+  | __pycache__
+  | view/ui/designer
+)/
+
+'''
 [tool.poetry]
 name = "expenses_logger"
 version = "0.1.0"
