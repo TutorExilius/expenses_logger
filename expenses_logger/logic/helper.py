@@ -1,12 +1,11 @@
 from pathlib import Path
 
 import toml
+import expenses_logger.globals as globals
 
 
 def get_app_version() -> str:
-    working_dir = Path(__file__).parent.parent
-
-    with open(working_dir / "pyproject.toml", encoding="utf8", mode="r") as file:
+    with open(Path(globals.WORKING_DIR) / "pyproject.toml", encoding="utf8", mode="r") as file:
         pyproject_file = toml.load(file)
 
     app_version = pyproject_file["tool"]["poetry"]["version"]
