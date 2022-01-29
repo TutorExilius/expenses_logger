@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "expenses_logger"
+version = "0.1.0"
+description = """The Expenses Logger tracks all expenses of a known list of users (list 'USERS' in globals.py)
+
+When the list of users changes, all previous entries in the database will be deleted
+and a new database will be created with current userlist from globals.py.
+"""
+authors = ["Tutor Exilius <tutorexilius@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.11"
+PySide6 = "^6.2.2"
+alembic = "^1.7.5"
+toml = "^0.10.2"
+
+[tool.poetry.dev-dependencies]
+black = "^21.12b0"
+flake8 = "^4.0.1"
+mypy = "^0.931"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
