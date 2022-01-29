@@ -1,7 +1,5 @@
-from datetime import datetime
-
-from sqlalchemy import Column, DateTime, ForeignKey, Integer, String, MetaData
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, DateTime, ForeignKey, Integer, MetaData, String
+from sqlalchemy.ext.declarative import declarative_base, DeclarativeMeta
 from sqlalchemy.orm import relationship
 
 meta = MetaData(
@@ -10,11 +8,11 @@ meta = MetaData(
         "uq": "uq_%(table_name)s_%(column_0_name)s",
         "ck": "ck_%(table_name)s_%(constraint_name)s",
         "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
-        "pk": "pk_%(table_name)s"
+        "pk": "pk_%(table_name)s",
     }
 )
 
-Base = declarative_base(metadata=meta)
+Base: DeclarativeMeta = declarative_base(metadata=meta)
 
 
 class BaseModel(Base):
@@ -28,7 +26,7 @@ class Entry(BaseModel):
     __tablename__ = "Entries"
 
     amount_in_cents = Column(Integer, nullable=False, default=0)
-    user_id = Column(Integer, ForeignKey('Users.id'), nullable=False)
+    user_id = Column(Integer, ForeignKey("Users.id"), nullable=False)
     user = relationship(
         "User",
         back_populates="entries",

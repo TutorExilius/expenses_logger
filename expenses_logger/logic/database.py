@@ -9,12 +9,13 @@ from sqlalchemy.orm import Session
 engine = create_engine(globals.DATABASE_URL)
 
 
-def initialize_new_database():
+def initialize_new_database() -> None:
     print("Create new database...")
     initialize_new_users(globals.USERS)
     print("Database created:", globals.DATABASE_URL)
 
-def empty_database():
+
+def empty_database() -> None:
     print("Empty Database...")
 
     delete_all_users()
@@ -22,7 +23,8 @@ def empty_database():
 
     print("Database emptied.")
 
-def delete_all_users():
+
+def delete_all_users() -> None:
     with Session(engine) as session:
         for user in session.query(User).all():
             print(f"Delete '{user.user_name}' ...")
@@ -50,7 +52,9 @@ def add_amount(user_name: str, amount_in_cents: int) -> None:
         user = session.query(User).filter_by(user_name=user_name).one_or_none()
 
         if user is None:
-            raise ValueError(f"Can't update amount for user '{user_name}', User not found.")
+            raise ValueError(
+                f"Can't update amount for user '{user_name}', User not found."
+            )
 
         entry = Entry(amount_in_cents=amount_in_cents, created_at=datetime.utcnow())
         session.add(entry)
@@ -66,9 +70,15 @@ def get_total_amount_in_cents(user_name: str, year: int) -> int:
         user = session.query(User).filter_by(user_name=user_name).one_or_none()
 
         if user is None:
-            raise ValueError(f"Can't update amount for user '{user_name}', User not found.")
+            raise ValueError(
+                f"Can't update amount for user '{user_name}', User not found."
+            )
 
-        entries_in_year = (entry.amount_in_cents for entry in user.entries if entry.created_at.year == year)
+        entries_in_year = (
+            entry.amount_in_cents
+            for entry in user.entries
+            if entry.created_at.year == year
+        )
         return sum(entry for entry in entries_in_year)
 
 
@@ -82,7 +92,9 @@ def get_oldest_year() -> int:
             user = session.query(User).filter_by(user_name=user_name).one_or_none()
 
             if user is None:
-                raise ValueError(f"Can't update amount for user '{user_name}', User not found.")
+                raise ValueError(
+                    f"Can't update amount for user '{user_name}', User not found."
+                )
 
             if user.entries:
                 year = user.entries[0].created_at.year
