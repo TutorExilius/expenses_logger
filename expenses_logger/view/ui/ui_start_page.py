@@ -20,15 +20,15 @@ from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLabel, QLineEdit,
     QSpacerItem, QVBoxLayout, QWidget, QWizardPage)
 
 class Ui_StartPage(object):
-    def setupUi(self, StartPage: QWizardPage) -> None:
+    def setupUi(self, StartPage):
         if not StartPage.objectName():
             StartPage.setObjectName(u"StartPage")
-        StartPage.resize(964, 713)
+        StartPage.resize(802, 499)
         StartPage.setStyleSheet(u"")
         self.verticalLayout_2 = QVBoxLayout(StartPage)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(16, 16, 16, 16)
-        self.verticalSpacer_3 = QSpacerItem(0, 20, QSizePolicy.Minimum, QSizePolicy.Fixed)
+        self.verticalSpacer_3 = QSpacerItem(0, 5, QSizePolicy.Minimum, QSizePolicy.Fixed)
 
         self.verticalLayout_2.addItem(self.verticalSpacer_3)
 
@@ -346,7 +346,7 @@ class Ui_StartPage(object):
 
         self.verticalLayout_4.addLayout(self.horizontalLayout_4)
 
-        self.verticalSpacer_5 = QSpacerItem(0, 8, QSizePolicy.Minimum, QSizePolicy.Fixed)
+        self.verticalSpacer_5 = QSpacerItem(0, 4, QSizePolicy.Minimum, QSizePolicy.Fixed)
 
         self.verticalLayout_4.addItem(self.verticalSpacer_5)
 
@@ -371,8 +371,8 @@ class Ui_StartPage(object):
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.listWidget.sizePolicy().hasHeightForWidth())
         self.listWidget.setSizePolicy(sizePolicy1)
-        self.listWidget.setMinimumSize(QSize(523, 300))
-        self.listWidget.setMaximumSize(QSize(16777215, 300))
+        self.listWidget.setMinimumSize(QSize(523, 80))
+        self.listWidget.setMaximumSize(QSize(16777215, 400))
         font4 = QFont()
         font4.setPointSize(9)
         self.listWidget.setFont(font4)
@@ -395,7 +395,7 @@ class Ui_StartPage(object):
 
         self.verticalLayout_2.addLayout(self.horizontalLayout)
 
-        self.verticalSpacer_2 = QSpacerItem(0, 20, QSizePolicy.Minimum, QSizePolicy.MinimumExpanding)
+        self.verticalSpacer_2 = QSpacerItem(0, 15, QSizePolicy.Minimum, QSizePolicy.MinimumExpanding)
 
         self.verticalLayout_2.addItem(self.verticalSpacer_2)
 
