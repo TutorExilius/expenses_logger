@@ -22,6 +22,10 @@ warn_unreachable = true
 strict_equality = true
 
 [[tool.mypy.overrides]]
+module = "expenses_logger.view.*"
+allow_untyped_calls = true
+
+[[tool.mypy.overrides]]
 module = "expenses_logger.view.ui.*"
 allow_untyped_defs = true
 allow_untyped_calls = true
