@@ -16,6 +16,7 @@ Proposed Commit Message Conventions:
 - refactor: for refactoring production code, e.g. renaming a variable.
 - test: for adding missing tests, refactoring tests; no production code change.
 - build: for updating build configuration, development tools or other changes irrelevant to the user.
+- wip: current state of branch may not work and is on "work in progress"
 
 Based on: http://karma-runner.github.io/6.3/dev/git-commit-msg.html#allowed-type-values
 
