@@ -1,5 +1,6 @@
 import asyncio
-from datetime import datetime
+
+# from datetime import datetime
 from enum import auto, Enum
 from pathlib import Path
 from typing import List
@@ -47,7 +48,7 @@ class MainWizard(QWizard):
 
         # start_page = self.page(self._pages[PageNumber.START_PAGE])
 
-        self.update_year_label(datetime.utcnow().year)
+        # self.update_year_label(datetime.utcnow().year)
 
         # self.setModal(False)
 

@@ -13,7 +13,7 @@ def main() -> None:
 
     mainWindow.show()
 
-    app.exec_()
+    app.exec()
 
 
 if __name__ == "__main__":
