@@ -40,3 +40,5 @@ Please adjust after every version change!
 | :---: | :---: |
 | v0.X  | v0.X - current version (v0.1.0)  |
 
+## Generate UI-Class from .ui-File
+C:\Users\twitch\AppData\Local\pypoetry\Cache\virtualenvs\expenses-logger-q0tIoH39-py3.9\Scripts\pyside6-uic.exe file.ui > ui_file.py
