@@ -15,15 +15,16 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLabel, QLineEdit,
-    QListWidget, QListWidgetItem, QPushButton, QSizePolicy,
-    QSpacerItem, QVBoxLayout, QWidget, QWizardPage)
+from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
+    QLayout, QLineEdit, QListWidget, QListWidgetItem,
+    QPushButton, QSizePolicy, QSpacerItem, QVBoxLayout,
+    QWidget, QWizardPage)
 
 class Ui_StartPage(object):
     def setupUi(self, StartPage):
         if not StartPage.objectName():
             StartPage.setObjectName(u"StartPage")
-        StartPage.resize(802, 499)
+        StartPage.resize(707, 634)
         StartPage.setStyleSheet(u"")
         self.verticalLayout_2 = QVBoxLayout(StartPage)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
@@ -62,9 +63,23 @@ class Ui_StartPage(object):
 
         self.verticalLayout_2.addItem(self.verticalSpacer)
 
-        self.verticalLayout_4 = QVBoxLayout()
-        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
-        self.verticalLayout_4.setContentsMargins(-1, -1, -1, 10)
+        self.frame = QFrame(StartPage)
+        self.frame.setObjectName(u"frame")
+        self.frame.setFrameShape(QFrame.StyledPanel)
+        self.frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_6 = QVBoxLayout(self.frame)
+        self.verticalLayout_6.setSpacing(6)
+        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
+        self.verticalLayout_6.setSizeConstraint(QLayout.SetNoConstraint)
+        self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
+        self.frame_letters = QFrame(self.frame)
+        self.frame_letters.setObjectName(u"frame_letters")
+        self.frame_letters.setFrameShape(QFrame.StyledPanel)
+        self.frame_letters.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_5 = QVBoxLayout(self.frame_letters)
+        self.verticalLayout_5.setSpacing(6)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.horizontalLayout_2.setContentsMargins(-1, -1, -1, 0)
@@ -72,109 +87,122 @@ class Ui_StartPage(object):
 
         self.horizontalLayout_2.addItem(self.horizontalSpacer_3)
 
-        self.pushButton_input_A = QPushButton(StartPage)
+        self.pushButton_input_A = QPushButton(self.frame_letters)
         self.pushButton_input_A.setObjectName(u"pushButton_input_A")
-        self.pushButton_input_A.setMaximumSize(QSize(35, 35))
-        self.pushButton_input_A.setSizeIncrement(QSize(35, 3035))
+        self.pushButton_input_A.setMinimumSize(QSize(40, 40))
+        self.pushButton_input_A.setMaximumSize(QSize(40, 40))
         font2 = QFont()
         font2.setPointSize(16)
         self.pushButton_input_A.setFont(font2)
+        self.pushButton_input_A.setFocusPolicy(Qt.NoFocus)
 
         self.horizontalLayout_2.addWidget(self.pushButton_input_A)
 
-        self.pushButton_input_B = QPushButton(StartPage)
+        self.pushButton_input_B = QPushButton(self.frame_letters)
         self.pushButton_input_B.setObjectName(u"pushButton_input_B")
-        self.pushButton_input_B.setMinimumSize(QSize(35, 35))
-        self.pushButton_input_B.setMaximumSize(QSize(35, 35))
+        self.pushButton_input_B.setMinimumSize(QSize(40, 40))
+        self.pushButton_input_B.setMaximumSize(QSize(40, 40))
         self.pushButton_input_B.setFont(font2)
+        self.pushButton_input_B.setFocusPolicy(Qt.NoFocus)
 
         self.horizontalLayout_2.addWidget(self.pushButton_input_B)
 
-        self.pushButton_input_C = QPushButton(StartPage)
+        self.pushButton_input_C = QPushButton(self.frame_letters)
         self.pushButton_input_C.setObjectName(u"pushButton_input_C")
-        self.pushButton_input_C.setMinimumSize(QSize(35, 35))
-        self.pushButton_input_C.setMaximumSize(QSize(35, 35))
+        self.pushButton_input_C.setMinimumSize(QSize(40, 40))
+        self.pushButton_input_C.setMaximumSize(QSize(40, 40))
         self.pushButton_input_C.setFont(font2)
+        self.pushButton_input_C.setFocusPolicy(Qt.NoFocus)
 
         self.horizontalLayout_2.addWidget(self.pushButton_input_C)
 
-        self.pushButton_input_D = QPushButton(StartPage)
+        self.pushButton_input_D = QPushButton(self.frame_letters)
         self.pushButton_input_D.setObjectName(u"pushButton_input_D")
-        self.pushButton_input_D.setMinimumSize(QSize(35, 35))
-        self.pushButton_input_D.setMaximumSize(QSize(35, 35))
+        self.pushButton_input_D.setMinimumSize(QSize(40, 40))
+        self.pushButton_input_D.setMaximumSize(QSize(40, 40))
         self.pushButton_input_D.setFont(font2)
+        self.pushButton_input_D.setFocusPolicy(Qt.NoFocus)
 
         self.horizontalLayout_2.addWidget(self.pushButton_input_D)
 
-        self.pushButton_input_E = QPushButton(StartPage)
+        self.pushButton_input_E = QPushButton(self.frame_letters)
         self.pushButton_input_E.setObjectName(u"pushButton_input_E")
-        self.pushButton_input_E.setMinimumSize(QSize(35, 35))
-        self.pushButton_input_E.setMaximumSize(QSize(35, 35))
+        self.pushButton_input_E.setMinimumSize(QSize(40, 40))
+        self.pushButton_input_E.setMaximumSize(QSize(40, 40))
         self.pushButton_input_E.setFont(font2)
+        self.pushButton_input_E.setFocusPolicy(Qt.NoFocus)
 
         self.horizontalLayout_2.addWidget(self.pushButton_input_E)
 
-        self.pushButton_input_F = QPushButton(StartPage)
+        self.pushButton_input_F = QPushButton(self.frame_letters)
         self.pushButton_input_F.setObjectName(u"pushButton_input_F")
-        self.pushButton_input_F.setMinimumSize(QSize(35, 35))
-        self.pushButton_input_F.setMaximumSize(QSize(35, 35))
+        self.pushButton_input_F.setMinimumSize(QSize(40, 40))
+        self.pushButton_input_F.setMaximumSize(QSize(40, 40))
         self.pushButton_input_F.setFont(font2)
+        self.pushButton_input_F.setFocusPolicy(Qt.NoFocus)
 
         self.horizontalLayout_2.addWidget(self.pushButton_input_F)
 
-        self.pushButton_input_G = QPushButton(StartPage)
+        self.pushButton_input_G = QPushButton(self.frame_letters)
         self.pushButton_input_G.setObjectName(u"pushButton_input_G")
-        self.pushButton_input_G.setMinimumSize(QSize(35, 35))
-        self.pushButton_input_G.setMaximumSize(QSize(35, 35))
+        self.pushButton_input_G.setMinimumSize(QSize(40, 40))
+        self.pushButton_input_G.setMaximumSize(QSize(40, 40))
         self.pushButton_input_G.setFont(font2)
+        self.pushButton_input_G.setFocusPolicy(Qt.NoFocus)
 
         self.horizontalLayout_2.addWidget(self.pushButton_input_G)
 
-        self.pushButton_input_H = QPushButton(StartPage)
+        self.pushButton_input_H = QPushButton(self.frame_letters)
         self.pushButton_input_H.setObjectName(u"pushButton_input_H")
-        self.pushButton_input_H.setMinimumSize(QSize(35, 35))
-        self.pushButton_input_H.setMaximumSize(QSize(35, 35))
+        self.pushButton_input_H.setMinimumSize(QSize(40, 40))
+        self.pushButton_input_H.setMaximumSize(QSize(40, 40))
         self.pushButton_input_H.setFont(font2)
+        self.pushButton_input_H.setFocusPolicy(Qt.NoFocus)
 
         self.horizontalLayout_2.addWidget(self.pushButton_input_H)
 
-        self.pushButton_input_I = QPushButton(StartPage)
+        self.pushButton_input_I = QPushButton(self.frame_letters)
         self.pushButton_input_I.setObjectName(u"pushButton_input_I")
-        self.pushButton_input_I.setMinimumSize(QSize(35, 35))
-        self.pushButton_input_I.setMaximumSize(QSize(35, 35))
+        self.pushButton_input_I.setMinimumSize(QSize(40, 40))
+        self.pushButton_input_I.setMaximumSize(QSize(40, 40))
         self.pushButton_input_I.setFont(font2)
+        self.pushButton_input_I.setFocusPolicy(Qt.NoFocus)
 
         self.horizontalLayout_2.addWidget(self.pushButton_input_I)
 
-        self.pushButton_input_J = QPushButton(StartPage)
+        self.pushButton_input_J = QPushButton(self.frame_letters)
         self.pushButton_input_J.setObjectName(u"pushButton_input_J")
-        self.pushButton_input_J.setMinimumSize(QSize(35, 35))
-        self.pushButton_input_J.setMaximumSize(QSize(35, 35))
+        self.pushButton_input_J.setMinimumSize(QSize(40, 40))
+        self.pushButton_input_J.setMaximumSize(QSize(40, 40))
         self.pushButton_input_J.setFont(font2)
+        self.pushButton_input_J.setFocusPolicy(Qt.NoFocus)
 
         self.horizontalLayout_2.addWidget(self.pushButton_input_J)
 
-        self.pushButton_input_K = QPushButton(StartPage)
+        self.pushButton_input_K = QPushButton(self.frame_letters)
         self.pushButton_input_K.setObjectName(u"pushButton_input_K")
-        self.pushButton_input_K.setMinimumSize(QSize(35, 35))
-        self.pushButton_input_K.setMaximumSize(QSize(35, 35))
+        self.pushButton_input_K.setMinimumSize(QSize(40, 40))
+        self.pushButton_input_K.setMaximumSize(QSize(40, 40))
         self.pushButton_input_K.setFont(font2)
+        self.pushButton_input_K.setFocusPolicy(Qt.NoFocus)
 
         self.horizontalLayout_2.addWidget(self.pushButton_input_K)
 
-        self.pushButton_input_L = QPushButton(StartPage)
+        self.pushButton_input_L = QPushButton(self.frame_letters)
         self.pushButton_input_L.setObjectName(u"pushButton_input_L")
-        self.pushButton_input_L.setMinimumSize(QSize(35, 35))
-        self.pushButton_input_L.setMaximumSize(QSize(35, 35))
+        self.pushButton_input_L.setMinimumSize(QSize(40, 40))
+        self.pushButton_input_L.setMaximumSize(QSize(40, 40))
         self.pushButton_input_L.setFont(font2)
+        self.pushButton_input_L.setFocusPolicy(Qt.NoFocus)
 
         self.horizontalLayout_2.addWidget(self.pushButton_input_L)
 
-        self.pushButton_input_M = QPushButton(StartPage)
+        self.pushButton_input_M = QPushButton(self.frame_letters)
         self.pushButton_input_M.setObjectName(u"pushButton_input_M")
-        self.pushButton_input_M.setMinimumSize(QSize(35, 35))
-        self.pushButton_input_M.setMaximumSize(QSize(35, 35))
+        self.pushButton_input_M.setMinimumSize(QSize(40, 40))
+        self.pushButton_input_M.setMaximumSize(QSize(40, 40))
         self.pushButton_input_M.setFont(font2)
+        self.pushButton_input_M.setFocusPolicy(Qt.NoFocus)
 
         self.horizontalLayout_2.addWidget(self.pushButton_input_M)
 
@@ -183,7 +211,7 @@ class Ui_StartPage(object):
         self.horizontalLayout_2.addItem(self.horizontalSpacer_5)
 
 
-        self.verticalLayout_4.addLayout(self.horizontalLayout_2)
+        self.verticalLayout_5.addLayout(self.horizontalLayout_2)
 
         self.horizontalLayout_3 = QHBoxLayout()
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
@@ -192,107 +220,120 @@ class Ui_StartPage(object):
 
         self.horizontalLayout_3.addItem(self.horizontalSpacer_4)
 
-        self.pushButton_input_N = QPushButton(StartPage)
+        self.pushButton_input_N = QPushButton(self.frame_letters)
         self.pushButton_input_N.setObjectName(u"pushButton_input_N")
-        self.pushButton_input_N.setMinimumSize(QSize(35, 35))
-        self.pushButton_input_N.setMaximumSize(QSize(35, 35))
+        self.pushButton_input_N.setMinimumSize(QSize(40, 40))
+        self.pushButton_input_N.setMaximumSize(QSize(40, 40))
         self.pushButton_input_N.setFont(font2)
+        self.pushButton_input_N.setFocusPolicy(Qt.NoFocus)
 
         self.horizontalLayout_3.addWidget(self.pushButton_input_N)
 
-        self.pushButton_input_O = QPushButton(StartPage)
+        self.pushButton_input_O = QPushButton(self.frame_letters)
         self.pushButton_input_O.setObjectName(u"pushButton_input_O")
-        self.pushButton_input_O.setMinimumSize(QSize(35, 35))
-        self.pushButton_input_O.setMaximumSize(QSize(35, 35))
+        self.pushButton_input_O.setMinimumSize(QSize(40, 40))
+        self.pushButton_input_O.setMaximumSize(QSize(40, 40))
         self.pushButton_input_O.setFont(font2)
+        self.pushButton_input_O.setFocusPolicy(Qt.NoFocus)
 
         self.horizontalLayout_3.addWidget(self.pushButton_input_O)
 
-        self.pushButton_input_P = QPushButton(StartPage)
+        self.pushButton_input_P = QPushButton(self.frame_letters)
         self.pushButton_input_P.setObjectName(u"pushButton_input_P")
-        self.pushButton_input_P.setMinimumSize(QSize(35, 35))
-        self.pushButton_input_P.setMaximumSize(QSize(35, 35))
+        self.pushButton_input_P.setMinimumSize(QSize(40, 40))
+        self.pushButton_input_P.setMaximumSize(QSize(40, 40))
         self.pushButton_input_P.setFont(font2)
+        self.pushButton_input_P.setFocusPolicy(Qt.NoFocus)
 
         self.horizontalLayout_3.addWidget(self.pushButton_input_P)
 
-        self.pushButton_input_Q = QPushButton(StartPage)
+        self.pushButton_input_Q = QPushButton(self.frame_letters)
         self.pushButton_input_Q.setObjectName(u"pushButton_input_Q")
-        self.pushButton_input_Q.setMaximumSize(QSize(35, 35))
-        self.pushButton_input_Q.setSizeIncrement(QSize(35, 35))
+        self.pushButton_input_Q.setMinimumSize(QSize(40, 40))
+        self.pushButton_input_Q.setMaximumSize(QSize(40, 40))
         self.pushButton_input_Q.setFont(font2)
+        self.pushButton_input_Q.setFocusPolicy(Qt.NoFocus)
 
         self.horizontalLayout_3.addWidget(self.pushButton_input_Q)
 
-        self.pushButton_input_R = QPushButton(StartPage)
+        self.pushButton_input_R = QPushButton(self.frame_letters)
         self.pushButton_input_R.setObjectName(u"pushButton_input_R")
-        self.pushButton_input_R.setMaximumSize(QSize(35, 35))
-        self.pushButton_input_R.setSizeIncrement(QSize(35, 35))
+        self.pushButton_input_R.setMinimumSize(QSize(40, 40))
+        self.pushButton_input_R.setMaximumSize(QSize(40, 40))
         self.pushButton_input_R.setFont(font2)
+        self.pushButton_input_R.setFocusPolicy(Qt.NoFocus)
 
         self.horizontalLayout_3.addWidget(self.pushButton_input_R)
 
-        self.pushButton_input_S = QPushButton(StartPage)
+        self.pushButton_input_S = QPushButton(self.frame_letters)
         self.pushButton_input_S.setObjectName(u"pushButton_input_S")
-        self.pushButton_input_S.setMaximumSize(QSize(35, 35))
-        self.pushButton_input_S.setSizeIncrement(QSize(35, 35))
+        self.pushButton_input_S.setMinimumSize(QSize(40, 40))
+        self.pushButton_input_S.setMaximumSize(QSize(40, 40))
         self.pushButton_input_S.setFont(font2)
+        self.pushButton_input_S.setFocusPolicy(Qt.NoFocus)
 
         self.horizontalLayout_3.addWidget(self.pushButton_input_S)
 
-        self.pushButton_input_T = QPushButton(StartPage)
+        self.pushButton_input_T = QPushButton(self.frame_letters)
         self.pushButton_input_T.setObjectName(u"pushButton_input_T")
-        self.pushButton_input_T.setMinimumSize(QSize(35, 35))
-        self.pushButton_input_T.setMaximumSize(QSize(35, 35))
+        self.pushButton_input_T.setMinimumSize(QSize(40, 40))
+        self.pushButton_input_T.setMaximumSize(QSize(40, 40))
         self.pushButton_input_T.setFont(font2)
+        self.pushButton_input_T.setFocusPolicy(Qt.NoFocus)
 
         self.horizontalLayout_3.addWidget(self.pushButton_input_T)
 
-        self.pushButton_input_U = QPushButton(StartPage)
+        self.pushButton_input_U = QPushButton(self.frame_letters)
         self.pushButton_input_U.setObjectName(u"pushButton_input_U")
-        self.pushButton_input_U.setMinimumSize(QSize(35, 35))
-        self.pushButton_input_U.setMaximumSize(QSize(35, 35))
+        self.pushButton_input_U.setMinimumSize(QSize(40, 40))
+        self.pushButton_input_U.setMaximumSize(QSize(40, 40))
         self.pushButton_input_U.setFont(font2)
+        self.pushButton_input_U.setFocusPolicy(Qt.NoFocus)
 
         self.horizontalLayout_3.addWidget(self.pushButton_input_U)
 
-        self.pushButton_input_V = QPushButton(StartPage)
+        self.pushButton_input_V = QPushButton(self.frame_letters)
         self.pushButton_input_V.setObjectName(u"pushButton_input_V")
-        self.pushButton_input_V.setMinimumSize(QSize(35, 35))
-        self.pushButton_input_V.setMaximumSize(QSize(35, 35))
+        self.pushButton_input_V.setMinimumSize(QSize(40, 40))
+        self.pushButton_input_V.setMaximumSize(QSize(40, 40))
         self.pushButton_input_V.setFont(font2)
+        self.pushButton_input_V.setFocusPolicy(Qt.NoFocus)
 
         self.horizontalLayout_3.addWidget(self.pushButton_input_V)
 
-        self.pushButton_input_W = QPushButton(StartPage)
+        self.pushButton_input_W = QPushButton(self.frame_letters)
         self.pushButton_input_W.setObjectName(u"pushButton_input_W")
-        self.pushButton_input_W.setMinimumSize(QSize(35, 35))
-        self.pushButton_input_W.setMaximumSize(QSize(35, 35))
+        self.pushButton_input_W.setMinimumSize(QSize(40, 40))
+        self.pushButton_input_W.setMaximumSize(QSize(40, 40))
         self.pushButton_input_W.setFont(font2)
+        self.pushButton_input_W.setFocusPolicy(Qt.NoFocus)
 
         self.horizontalLayout_3.addWidget(self.pushButton_input_W)
 
-        self.pushButton_input_X = QPushButton(StartPage)
+        self.pushButton_input_X = QPushButton(self.frame_letters)
         self.pushButton_input_X.setObjectName(u"pushButton_input_X")
-        self.pushButton_input_X.setMinimumSize(QSize(35, 35))
-        self.pushButton_input_X.setMaximumSize(QSize(35, 35))
+        self.pushButton_input_X.setMinimumSize(QSize(40, 40))
+        self.pushButton_input_X.setMaximumSize(QSize(40, 40))
         self.pushButton_input_X.setFont(font2)
+        self.pushButton_input_X.setFocusPolicy(Qt.NoFocus)
 
         self.horizontalLayout_3.addWidget(self.pushButton_input_X)
 
-        self.pushButton_input_Y = QPushButton(StartPage)
+        self.pushButton_input_Y = QPushButton(self.frame_letters)
         self.pushButton_input_Y.setObjectName(u"pushButton_input_Y")
-        self.pushButton_input_Y.setMinimumSize(QSize(35, 35))
-        self.pushButton_input_Y.setMaximumSize(QSize(35, 35))
+        self.pushButton_input_Y.setMinimumSize(QSize(40, 40))
+        self.pushButton_input_Y.setMaximumSize(QSize(40, 40))
         self.pushButton_input_Y.setFont(font2)
+        self.pushButton_input_Y.setFocusPolicy(Qt.NoFocus)
 
         self.horizontalLayout_3.addWidget(self.pushButton_input_Y)
 
-        self.pushButton_input_Z = QPushButton(StartPage)
+        self.pushButton_input_Z = QPushButton(self.frame_letters)
         self.pushButton_input_Z.setObjectName(u"pushButton_input_Z")
-        self.pushButton_input_Z.setMaximumSize(QSize(35, 35))
-        self.pushButton_input_Z.setSizeIncrement(QSize(35, 35))
+        self.pushButton_input_Z.setMinimumSize(QSize(40, 40))
+        self.pushButton_input_Z.setMaximumSize(QSize(40, 40))
         self.pushButton_input_Z.setFont(font2)
+        self.pushButton_input_Z.setFocusPolicy(Qt.NoFocus)
 
         self.horizontalLayout_3.addWidget(self.pushButton_input_Z)
 
@@ -301,9 +342,15 @@ class Ui_StartPage(object):
         self.horizontalLayout_3.addItem(self.horizontalSpacer_6)
 
 
-        self.verticalLayout_4.addLayout(self.horizontalLayout_3)
+        self.verticalLayout_5.addLayout(self.horizontalLayout_3)
 
-        self.verticalSpacer_4 = QSpacerItem(0, 4, QSizePolicy.Minimum, QSizePolicy.Fixed)
+
+        self.verticalLayout_6.addWidget(self.frame_letters)
+
+        self.verticalLayout_4 = QVBoxLayout()
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.verticalLayout_4.setContentsMargins(-1, -1, -1, 10)
+        self.verticalSpacer_4 = QSpacerItem(0, 6, QSizePolicy.Minimum, QSizePolicy.Fixed)
 
         self.verticalLayout_4.addItem(self.verticalSpacer_4)
 
@@ -315,7 +362,7 @@ class Ui_StartPage(object):
 
         self.horizontalLayout_4.addItem(self.horizontalSpacer_7)
 
-        self.lineEdit = QLineEdit(StartPage)
+        self.lineEdit = QLineEdit(self.frame)
         self.lineEdit.setObjectName(u"lineEdit")
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -325,17 +372,24 @@ class Ui_StartPage(object):
         self.lineEdit.setMinimumSize(QSize(450, 0))
         self.lineEdit.setMaximumSize(QSize(450, 30))
         self.lineEdit.setFont(font2)
+        self.lineEdit.setFocusPolicy(Qt.NoFocus)
         self.lineEdit.setStyleSheet(u"color: red;")
+        self.lineEdit.setReadOnly(True)
 
         self.horizontalLayout_4.addWidget(self.lineEdit)
 
-        self.pushButton_clear = QPushButton(StartPage)
+        self.horizontalSpacer_9 = QSpacerItem(10, 0, QSizePolicy.Fixed, QSizePolicy.Minimum)
+
+        self.horizontalLayout_4.addItem(self.horizontalSpacer_9)
+
+        self.pushButton_clear = QPushButton(self.frame)
         self.pushButton_clear.setObjectName(u"pushButton_clear")
         self.pushButton_clear.setMinimumSize(QSize(75, 30))
-        self.pushButton_clear.setMaximumSize(QSize(75, 30))
+        self.pushButton_clear.setMaximumSize(QSize(75, 40))
         font3 = QFont()
         font3.setPointSize(14)
         self.pushButton_clear.setFont(font3)
+        self.pushButton_clear.setFocusPolicy(Qt.NoFocus)
 
         self.horizontalLayout_4.addWidget(self.pushButton_clear)
 
@@ -346,12 +400,15 @@ class Ui_StartPage(object):
 
         self.verticalLayout_4.addLayout(self.horizontalLayout_4)
 
-        self.verticalSpacer_5 = QSpacerItem(0, 4, QSizePolicy.Minimum, QSizePolicy.Fixed)
+        self.verticalSpacer_5 = QSpacerItem(0, 12, QSizePolicy.Minimum, QSizePolicy.Fixed)
 
         self.verticalLayout_4.addItem(self.verticalSpacer_5)
 
 
-        self.verticalLayout_2.addLayout(self.verticalLayout_4)
+        self.verticalLayout_6.addLayout(self.verticalLayout_4)
+
+
+        self.verticalLayout_2.addWidget(self.frame)
 
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setSpacing(0)
@@ -373,9 +430,8 @@ class Ui_StartPage(object):
         self.listWidget.setSizePolicy(sizePolicy1)
         self.listWidget.setMinimumSize(QSize(523, 80))
         self.listWidget.setMaximumSize(QSize(16777215, 400))
-        font4 = QFont()
-        font4.setPointSize(9)
-        self.listWidget.setFont(font4)
+        self.listWidget.setFont(font1)
+        self.listWidget.setFocusPolicy(Qt.NoFocus)
         self.listWidget.setStyleSheet(u"QScrollBar:vertical\n"
 "{\n"
 "width: 25px;\n"
@@ -401,6 +457,22 @@ class Ui_StartPage(object):
 
         self.verticalLayout_2.setStretch(3, 3)
         self.verticalLayout_2.setStretch(6, 4)
+        QWidget.setTabOrder(self.pushButton_input_L, self.pushButton_input_M)
+        QWidget.setTabOrder(self.pushButton_input_M, self.pushButton_input_N)
+        QWidget.setTabOrder(self.pushButton_input_N, self.pushButton_input_O)
+        QWidget.setTabOrder(self.pushButton_input_O, self.pushButton_input_P)
+        QWidget.setTabOrder(self.pushButton_input_P, self.pushButton_input_Q)
+        QWidget.setTabOrder(self.pushButton_input_Q, self.pushButton_input_R)
+        QWidget.setTabOrder(self.pushButton_input_R, self.pushButton_input_S)
+        QWidget.setTabOrder(self.pushButton_input_S, self.pushButton_input_T)
+        QWidget.setTabOrder(self.pushButton_input_T, self.pushButton_input_U)
+        QWidget.setTabOrder(self.pushButton_input_U, self.pushButton_input_V)
+        QWidget.setTabOrder(self.pushButton_input_V, self.pushButton_input_W)
+        QWidget.setTabOrder(self.pushButton_input_W, self.pushButton_input_X)
+        QWidget.setTabOrder(self.pushButton_input_X, self.pushButton_input_Y)
+        QWidget.setTabOrder(self.pushButton_input_Y, self.pushButton_input_Z)
+        QWidget.setTabOrder(self.pushButton_input_Z, self.pushButton_clear)
+        QWidget.setTabOrder(self.pushButton_clear, self.listWidget)
 
         self.retranslateUi(StartPage)
 
