@@ -38,6 +38,8 @@ class MainWizard(QWizard):
 
         super().__init__(parent)
 
+        self.setWizardStyle(QWizard.ModernStyle)
+
         self.user_names = user_names
         self._pages = {}
 
@@ -45,8 +47,6 @@ class MainWizard(QWizard):
 
         self._pages[PageNumber.START_PAGE] = self.addPage(StartPage(self, user_names))
         # self._pages[PageNumber.INPUT_PAGE] = self.addPage(InputPage(self))
-
-        # start_page = self.page(self._pages[PageNumber.START_PAGE])
 
         # self.update_year_label(datetime.utcnow().year)
 
