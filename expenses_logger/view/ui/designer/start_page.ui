@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>707</width>
-    <height>634</height>
+    <width>787</width>
+    <height>566</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -1157,7 +1157,20 @@
           <enum>Qt::NoFocus</enum>
          </property>
          <property name="styleSheet">
-          <string notr="true">QScrollBar:vertical
+          <string notr="true">QListWidget:item
+{
+padding: 6px;
+background-color: #eaefff;
+border: 1px outset black;
+}
+
+QListWidget::item:selected
+{
+background-color: #aaafff;
+border: 3px outset black;
+}
+
+QScrollBar:vertical
 {
 width: 25px;
 }</string>
@@ -1167,6 +1180,15 @@ width: 25px;
          </property>
          <property name="horizontalScrollBarPolicy">
           <enum>Qt::ScrollBarAlwaysOff</enum>
+         </property>
+         <property name="selectionMode">
+          <enum>QAbstractItemView::SingleSelection</enum>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
+         <property name="spacing">
+          <number>6</number>
          </property>
         </widget>
        </item>

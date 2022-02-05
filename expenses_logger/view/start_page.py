@@ -1,9 +1,8 @@
 from functools import partial
 from typing import List
 
-from PySide6.QtWidgets import QWizard, QWizardPage, QListWidgetItem, QPushButton, QLabel
-
 from expenses_logger.view.ui.ui_start_page import Ui_StartPage
+from PySide6.QtWidgets import QLabel, QListWidgetItem, QPushButton, QWizard, QWizardPage
 
 
 class StartPage(QWizardPage, Ui_StartPage):
@@ -18,7 +17,7 @@ class StartPage(QWizardPage, Ui_StartPage):
 
         # connections
         self.pushButton_clear.clicked.connect(self.line_edit_clear)
-
+        self.listWidget.itemSelectionChanged.connect(self.selection_name_clicked)
         for button_letter in self.frame_letters.children():
             if isinstance(button_letter, QPushButton):
                 button_letter.clicked.connect(
@@ -41,12 +40,7 @@ class StartPage(QWizardPage, Ui_StartPage):
         self.listWidget.clear()
 
         for user_name in sorted(userlist):
-            label = QLabel(user_name)
-            label.mousePressEvent = partial(self.name_clicked, user_name)
-
-            item = QListWidgetItem()
-            self.listWidget.addItem(item)
-            self.listWidget.setItemWidget(item, label)
+            self.add_item_in_list_widget(title=user_name, user_name=user_name)
 
     def filter_userlist(self, matched_user_names: List[str]) -> None:
         self.listWidget.clear()
@@ -69,17 +63,27 @@ class StartPage(QWizardPage, Ui_StartPage):
             matched_name_part = "".join(matched_letters)
             remaining_name_part = user_name[len(matched_name_part) :]
 
-            label = QLabel(
-                f"<font color=red>{matched_name_part.capitalize()}</font>"
-                f"{remaining_name_part}"
+            self.add_item_in_list_widget(
+                title=f"<font color=red>{matched_name_part.capitalize()}</font>"
+                f"{remaining_name_part}",
+                user_name=user_name,
             )
-            label.mousePressEvent = partial(self.name_clicked, user_name)
-            item = QListWidgetItem()
-            self.listWidget.addItem(item)
-            self.listWidget.setItemWidget(item, label)
 
-    def name_clicked(self, user_name: object, *args: object, **kwargs: object) -> None:
-        print("ich wurde geklickt", user_name)
+    def add_item_in_list_widget(self, title: str, user_name: str) -> None:
+        label = QLabel(title)
+        label._origin_user_name = user_name
+
+        item = QListWidgetItem()
+
+        self.listWidget.addItem(item)
+        self.listWidget.setItemWidget(item, label)
+
+    def selection_name_clicked(self) -> None:
+        if not self.listWidget.selectedItems():
+            return
+
+        item = self.listWidget.selectedItems()[0]
+        print("ich wurde geklickt", self.listWidget.itemWidget(item)._origin_user_name)
 
     def show_filtered_user_list(self) -> None:
         self.listWidget.clear()

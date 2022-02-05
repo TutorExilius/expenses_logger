@@ -15,16 +15,16 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
-    QLayout, QLineEdit, QListWidget, QListWidgetItem,
-    QPushButton, QSizePolicy, QSpacerItem, QVBoxLayout,
-    QWidget, QWizardPage)
+from PySide6.QtWidgets import (QAbstractItemView, QApplication, QFrame, QHBoxLayout,
+    QLabel, QLayout, QLineEdit, QListWidget,
+    QListWidgetItem, QPushButton, QSizePolicy, QSpacerItem,
+    QVBoxLayout, QWidget, QWizardPage)
 
 class Ui_StartPage(object):
     def setupUi(self, StartPage):
         if not StartPage.objectName():
             StartPage.setObjectName(u"StartPage")
-        StartPage.resize(707, 634)
+        StartPage.resize(787, 566)
         StartPage.setStyleSheet(u"")
         self.verticalLayout_2 = QVBoxLayout(StartPage)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
@@ -432,12 +432,28 @@ class Ui_StartPage(object):
         self.listWidget.setMaximumSize(QSize(16777215, 400))
         self.listWidget.setFont(font1)
         self.listWidget.setFocusPolicy(Qt.NoFocus)
-        self.listWidget.setStyleSheet(u"QScrollBar:vertical\n"
+        self.listWidget.setStyleSheet(u"QListWidget:item\n"
+"{\n"
+"padding: 6px;\n"
+"background-color: #eaefff;\n"
+"border: 1px outset black;\n"
+"}\n"
+"\n"
+"QListWidget::item:selected\n"
+"{\n"
+"background-color: #aaafff;\n"
+"border: 3px outset black;\n"
+"}\n"
+"\n"
+"QScrollBar:vertical\n"
 "{\n"
 "width: 25px;\n"
 "}")
         self.listWidget.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         self.listWidget.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.listWidget.setSelectionMode(QAbstractItemView.SingleSelection)
+        self.listWidget.setSelectionBehavior(QAbstractItemView.SelectRows)
+        self.listWidget.setSpacing(6)
 
         self.verticalLayout_3.addWidget(self.listWidget)
 
