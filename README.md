@@ -42,3 +42,12 @@ Please adjust after every version change!
 
 ## Generate UI-Class from .ui-File
 C:\Users\twitch\AppData\Local\pypoetry\Cache\virtualenvs\expenses-logger-q0tIoH39-py3.9\Scripts\pyside6-uic.exe file.ui > ui_file.py
+
+### Converting problems:
+- Problem: 🗑 will be converted as '\u1F5D1', which is too long for Python unicode escaping
+- Solution: Replace '\u1F5D1' -> \U0001F5D1
+
+
+- Problem: in Windows, pyside6-uic.exe creates non-utf-8 ui_xxx.py files. MyPy will get problems with non-utf-8 encoded .py files.
+- Solution 1: convert ui file to UTF-8 (e.g. with notepad++) and save/replace ui_xxx.py file
+- Solution 2: (suggestion from the community) maybe the environment variable 'PYTHONIOENCODING=utf8' could resolve that problem
