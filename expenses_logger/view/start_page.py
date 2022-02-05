@@ -1,5 +1,5 @@
 from functools import partial
-from typing import Dict, List
+from typing import List
 
 from PySide6.QtWidgets import QWizard, QWizardPage, QListWidgetItem, QPushButton, QLabel
 
@@ -48,31 +48,31 @@ class StartPage(QWizardPage, Ui_StartPage):
             self.listWidget.addItem(item)
             self.listWidget.setItemWidget(item, label)
 
-    def filter_userlist(self, matched_user_names: Dict[str, str]) -> None:
+    def filter_userlist(self, matched_user_names: List[str]) -> None:
         self.listWidget.clear()
 
-        for user_name in sorted(matched_user_names.keys()):
-            matched_letters = [letter for letter in self.lineEdit.text()]
-            _matched_letters = []
+        for user_name in sorted(matched_user_names):
+            matched_letters = []
+            pattern_letters = [letter for letter in self.lineEdit.text()]
 
             for letter in user_name:
-                if not letter.isalpha():
-                    _matched_letters.append(letter)
-                    continue
-
-                if not matched_letters:
+                if not pattern_letters:
                     break
 
-                matched_letters.pop()
-                _matched_letters.append(letter)
+                if not letter.isalpha():
+                    matched_letters.append(letter)
+                    continue
 
-            matched_letters_str = "".join(_matched_letters)
-            label_text = user_name[len(matched_letters_str) :]
-            matched_letters_str = (
-                f"<font color=red>{matched_letters_str.capitalize()}</font>"
+                matched_letters.append(letter)
+                pattern_letters.pop()
+
+            matched_name_part = "".join(matched_letters)
+            remaining_name_part = user_name[len(matched_name_part) :]
+
+            label = QLabel(
+                f"<font color=red>{matched_name_part.capitalize()}</font>"
+                f"{remaining_name_part}"
             )
-
-            label = QLabel(f"{matched_letters_str}{label_text}")
             label.mousePressEvent = partial(self.name_clicked, user_name)
             item = QListWidgetItem()
             self.listWidget.addItem(item)
@@ -84,17 +84,18 @@ class StartPage(QWizardPage, Ui_StartPage):
     def show_filtered_user_list(self) -> None:
         self.listWidget.clear()
 
-        alpha_only_users_map = {}
+        pattern = self.lineEdit.text().lower()
+        matched_user_names = []
 
         for user_name in self.users:
             alpha_only_username = "".join(
                 [letter for letter in user_name if letter.isalpha()]
-            )
+            ).lower()
 
-            if alpha_only_username.lower().startswith(self.lineEdit.text().lower()):
-                alpha_only_users_map[user_name] = alpha_only_username
+            if alpha_only_username.startswith(pattern):
+                matched_user_names.append(user_name)
 
-        self.filter_userlist(alpha_only_users_map)
+        self.filter_userlist(matched_user_names)
 
     def letter_button_clicked(self, letter: str) -> None:
         self.lineEdit.insert(letter)
