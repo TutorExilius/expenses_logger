@@ -1038,6 +1038,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="pushButton_clear">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="minimumSize">
              <size>
               <width>75</width>

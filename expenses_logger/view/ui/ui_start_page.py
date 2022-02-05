@@ -384,6 +384,7 @@ class Ui_StartPage(object):
 
         self.pushButton_clear = QPushButton(self.frame)
         self.pushButton_clear.setObjectName(u"pushButton_clear")
+        self.pushButton_clear.setEnabled(False)
         self.pushButton_clear.setMinimumSize(QSize(75, 30))
         self.pushButton_clear.setMaximumSize(QSize(75, 40))
         font3 = QFont()

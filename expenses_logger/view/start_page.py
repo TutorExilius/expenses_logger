@@ -32,6 +32,7 @@ class StartPage(QWizardPage, Ui_StartPage):
 
     def line_edit_clear(self) -> None:
         self.lineEdit.clear()
+        self.pushButton_clear.setEnabled(False)
         self.refresh_user_list(self.users)
 
     def refresh_user_list(
@@ -42,8 +43,16 @@ class StartPage(QWizardPage, Ui_StartPage):
         for user_name in sorted(userlist):
             self.add_item_in_list_widget(title=user_name, user_name=user_name)
 
+        if len(userlist) <= 1:
+            self.frame_letters.setEnabled(False)
+        else:
+            self.frame_letters.setEnabled(True)
+
     def filter_userlist(self, matched_user_names: List[str]) -> None:
         self.listWidget.clear()
+
+        if len(matched_user_names) <= 1:
+            self.frame_letters.setEnabled(False)
 
         for user_name in sorted(matched_user_names):
             matched_letters = []
@@ -64,7 +73,7 @@ class StartPage(QWizardPage, Ui_StartPage):
             remaining_name_part = user_name[len(matched_name_part) :]
 
             self.add_item_in_list_widget(
-                title=f"<font color=red>{matched_name_part.capitalize()}</font>"
+                title=f"<font color=red>{matched_name_part}</font>"
                 f"{remaining_name_part}",
                 user_name=user_name,
             )
@@ -102,6 +111,7 @@ class StartPage(QWizardPage, Ui_StartPage):
         self.filter_userlist(matched_user_names)
 
     def letter_button_clicked(self, letter: str) -> None:
+        self.pushButton_clear.setEnabled(True)
         self.lineEdit.insert(letter)
         self.show_filtered_user_list()
 
