@@ -17,6 +17,8 @@ from expenses_logger.logic.helper import (
     sync_database,
 )
 from expenses_logger.view.start_page import StartPage
+
+from expenses_logger.view.input_page import InputPage
 from PySide6.QtCore import QSize
 from PySide6.QtWidgets import QWidget, QWizard
 
@@ -39,14 +41,13 @@ class MainWizard(QWizard):
         super().__init__(parent)
 
         self.setWizardStyle(QWizard.ModernStyle)
-
-        self.user_names = user_names
-        self._pages = {}
-
         self.setButtonLayout([])
 
+        self.user_names = user_names
+
+        self._pages = {}
         self._pages[PageNumber.START_PAGE] = self.addPage(StartPage(self, user_names))
-        # self._pages[PageNumber.INPUT_PAGE] = self.addPage(InputPage(self))
+        self._pages[PageNumber.INPUT_PAGE] = self.addPage(InputPage(self))
 
         # self.update_year_label(datetime.utcnow().year)
 
