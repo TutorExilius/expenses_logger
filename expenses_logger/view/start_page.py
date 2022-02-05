@@ -3,10 +3,11 @@ from typing import List
 
 from expenses_logger.view.ui.ui_start_page import Ui_StartPage
 from PySide6.QtWidgets import QLabel, QListWidgetItem, QPushButton, QWizard, QWizardPage
+from PySide6.QtCore import Signal
 
 
 class StartPage(QWizardPage, Ui_StartPage):
-    # leave_start_page = pyqtSignal(str)
+    leave_start_page = Signal(str)
 
     def __init__(self, parent: QWizard, user_names: list[str]) -> None:
         QWizardPage.__init__(self)
@@ -92,7 +93,10 @@ class StartPage(QWizardPage, Ui_StartPage):
             return
 
         item = self.listWidget.selectedItems()[0]
-        print("ich wurde geklickt", self.listWidget.itemWidget(item)._origin_user_name)
+        user_name = self.listWidget.itemWidget(item)._origin_user_name
+
+        print("ich wurde geklickt", user_name)
+        self.leave_start_page.emit(user_name)
 
     def show_filtered_user_list(self) -> None:
         self.listWidget.clear()

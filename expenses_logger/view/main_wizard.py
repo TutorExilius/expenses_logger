@@ -19,7 +19,7 @@ from expenses_logger.logic.helper import (
 from expenses_logger.view.start_page import StartPage
 
 from expenses_logger.view.input_page import InputPage
-from PySide6.QtCore import QSize
+from PySide6.QtCore import QSize, Slot
 from PySide6.QtWidgets import QWidget, QWizard
 
 
@@ -61,7 +61,9 @@ class MainWizard(QWizard):
         # self.setWindowState(self.windowState() | QtCore.Qt.WindowFullScreen)
 
         # connections
-        # self.page(self._pages[PageNumber.START_PAGE]).leave_start_page.connect(self.leave_start_page)
+        self.page(self._pages[PageNumber.START_PAGE]).leave_start_page.connect(
+            self.leave_start_page
+        )
         # self.page(self._pages[PageNumber.INPUT_PAGE]).leave_input_page.connect(self.leave_input_page)
 
     def update_year_label(self, year: int) -> None:
@@ -106,7 +108,7 @@ class MainWizard(QWizard):
         start_page.label_amount_1.setText(amount_in_cents_to_str(user_1_total_cents))
         start_page.label_amount_2.setText(amount_in_cents_to_str(user_2_total_cents))
 
-    # @QtCore.pyqtSlot(str)
+    @Slot()
     def leave_start_page(self, user_name: str) -> None:
         print_log(
             page_name="StartPage",
@@ -135,7 +137,7 @@ class MainWizard(QWizard):
         self._reset_input_page()
 
     def next(self, user_name: str) -> None:
-        super(MainWizard, self).next()
+        super().next()
         input_page = self.page(self._pages[PageNumber.INPUT_PAGE])
         input_page.label_name.setText(user_name)
 
