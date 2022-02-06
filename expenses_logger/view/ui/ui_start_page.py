@@ -431,11 +431,13 @@ class Ui_StartPage(object):
         self.listWidget.setSizePolicy(sizePolicy1)
         self.listWidget.setMinimumSize(QSize(523, 80))
         self.listWidget.setMaximumSize(QSize(16777215, 400))
-        self.listWidget.setFont(font1)
+        font4 = QFont()
+        font4.setPointSize(18)
+        self.listWidget.setFont(font4)
         self.listWidget.setFocusPolicy(Qt.NoFocus)
         self.listWidget.setStyleSheet(u"QListWidget:item\n"
 "{\n"
-"padding: 6px;\n"
+"padding: 3px 8px;\n"
 "background-color: #eaefff;\n"
 "border: 1px outset black;\n"
 "}\n"

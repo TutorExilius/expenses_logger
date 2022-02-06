@@ -2,8 +2,15 @@ from functools import partial
 from typing import List
 
 from expenses_logger.view.ui.ui_start_page import Ui_StartPage
-from PySide6.QtWidgets import QLabel, QListWidgetItem, QPushButton, QWizard, QWizardPage
+from PySide6.QtWidgets import (
+    QListWidgetItem,
+    QPushButton,
+    QWizard,
+    QWizardPage,
+)
 from PySide6.QtCore import Signal
+
+from expenses_logger.view.custom_widgets import ListItem
 
 
 class StartPage(QWizardPage, Ui_StartPage):
@@ -80,13 +87,13 @@ class StartPage(QWizardPage, Ui_StartPage):
             )
 
     def add_item_in_list_widget(self, title: str, user_name: str) -> None:
-        label = QLabel(title)
-        label._origin_user_name = user_name
+        item_widget = ListItem(title, 0)
+        item_widget._origin_user_name = user_name
 
         item = QListWidgetItem()
 
         self.listWidget.addItem(item)
-        self.listWidget.setItemWidget(item, label)
+        self.listWidget.setItemWidget(item, item_widget)
 
     def selection_name_clicked(self) -> None:
         if not self.listWidget.selectedItems():

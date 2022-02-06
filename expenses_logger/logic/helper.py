@@ -4,7 +4,6 @@ from pathlib import Path
 
 import expenses_logger.globals as globals
 import toml
-
 from aiofile import async_open
 
 in_syncing_lock = asyncio.Lock()
@@ -79,3 +78,9 @@ def get_app_version() -> str:
 
 def get_app_major_version() -> str:
     return get_app_version().split(".")[0]
+
+
+# setlocale and decimal point for de_DE (. -> ,)
+# does not work. This helper function shall be used untilthat problem is fixed
+def cents_to_euro(amount_in_cent: int) -> str:
+    return f"{amount_in_cent / 100:.2f} €".replace(".", ",")
