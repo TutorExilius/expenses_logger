@@ -45,7 +45,7 @@ C:\Users\twitch\AppData\Local\pypoetry\Cache\virtualenvs\expenses-logger-q0tIoH3
 
 ### Converting problems:
 - Problem: 🗑 will be converted as '\u1F5D1', which is too long for Python unicode escaping
-- Solution: Replace '\u1F5D1' -> \U0001F5D1
+- Solution: Replace '\u1F5D1' (or u"\d83d\uddd1") to \U0001F5D1
 
 
 - Problem: in Windows, pyside6-uic.exe creates non-utf-8 ui_xxx.py files. MyPy will get problems with non-utf-8 encoded .py files.
