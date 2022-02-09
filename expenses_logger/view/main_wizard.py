@@ -64,7 +64,9 @@ class MainWizard(QWizard):
         self.page(self._pages[PageNumber.START_PAGE]).leave_start_page.connect(
             self.leave_start_page
         )
-        # self.page(self._pages[PageNumber.INPUT_PAGE]).leave_input_page.connect(self.leave_input_page)
+        self.page(self._pages[PageNumber.INPUT_PAGE]).leave_input_page.connect(
+            self.leave_input_page
+        )
 
     def update_year_label(self, year: int) -> None:
         start_page = self.page(self._pages[PageNumber.START_PAGE])
@@ -117,7 +119,7 @@ class MainWizard(QWizard):
         )
         self.next(user_name)
 
-    # @QtCore.pyqtSlot(str, str)
+    @Slot()
     def leave_input_page(self, user_name: str, amount: str) -> None:
         if amount:
             print_log(
@@ -163,6 +165,8 @@ class MainWizard(QWizard):
             loop.create_task(sync_database(src_database, target_database))
 
     def back(self, user_name: str) -> None:
+        start_page = self.page(self._pages[PageNumber.START_PAGE])
+        start_page.listWidget.clearSelection()
         super(MainWizard, self).back()
 
     def _reset_input_page(self) -> None:

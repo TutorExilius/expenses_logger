@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'input_page.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.2.2
+## Created by: Qt User Interface Compiler version 5.15.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -17,7 +17,7 @@ class Ui_InputPage(object):
     def setupUi(self, InputPage):
         if not InputPage.objectName():
             InputPage.setObjectName(u"InputPage")
-        InputPage.resize(816, 579)
+        InputPage.resize(860, 480)
         InputPage.setStyleSheet(u"")
         self.horizontalLayout_4 = QHBoxLayout(InputPage)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
@@ -40,7 +40,7 @@ class Ui_InputPage(object):
 
         self.horizontalLayout_5.addWidget(self.pushButton_back)
 
-        self.horizontalSpacer = QSpacerItem(22, 0, QSizePolicy.Fixed, QSizePolicy.Minimum)
+        self.horizontalSpacer = QSpacerItem(45, 0, QSizePolicy.Fixed, QSizePolicy.Minimum)
 
         self.horizontalLayout_5.addItem(self.horizontalSpacer)
 
@@ -331,8 +331,8 @@ class Ui_InputPage(object):
         self.pushButton_save_back = QPushButton(InputPage)
         self.pushButton_save_back.setObjectName(u"pushButton_save_back")
         self.pushButton_save_back.setEnabled(False)
-        self.pushButton_save_back.setMinimumSize(QSize(250, 40))
-        self.pushButton_save_back.setMaximumSize(QSize(250, 40))
+        self.pushButton_save_back.setMinimumSize(QSize(246, 40))
+        self.pushButton_save_back.setMaximumSize(QSize(246, 40))
         self.pushButton_save_back.setFont(font3)
         self.pushButton_save_back.setFocusPolicy(Qt.NoFocus)
 

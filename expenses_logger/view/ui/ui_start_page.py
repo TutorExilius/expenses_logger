@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'start_page.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.2.2
+## Created by: Qt User Interface Compiler version 5.15.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -17,7 +17,7 @@ class Ui_StartPage(object):
     def setupUi(self, StartPage):
         if not StartPage.objectName():
             StartPage.setObjectName(u"StartPage")
-        StartPage.resize(787, 566)
+        StartPage.resize(897, 510)
         StartPage.setStyleSheet(u"")
         self.verticalLayout_2 = QVBoxLayout(StartPage)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
@@ -27,7 +27,7 @@ class Ui_StartPage(object):
         self.label_title = QLabel(StartPage)
         self.label_title.setObjectName(u"label_title")
         font = QFont()
-        font.setPointSize(18)
+        font.setPointSize(17)
         font.setUnderline(True)
         self.label_title.setFont(font)
         self.label_title.setStyleSheet(u"text-decoration: underline;")
@@ -41,14 +41,14 @@ class Ui_StartPage(object):
         self.label_year = QLabel(StartPage)
         self.label_year.setObjectName(u"label_year")
         font1 = QFont()
-        font1.setPointSize(20)
+        font1.setPointSize(19)
         self.label_year.setFont(font1)
         self.label_year.setStyleSheet(u"")
         self.label_year.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_2.addWidget(self.label_year)
 
-        self.verticalSpacer = QSpacerItem(0, 15, QSizePolicy.Minimum, QSizePolicy.MinimumExpanding)
+        self.verticalSpacer = QSpacerItem(0, 9, QSizePolicy.Minimum, QSizePolicy.MinimumExpanding)
 
         self.verticalLayout_2.addItem(self.verticalSpacer)
 
@@ -339,7 +339,7 @@ class Ui_StartPage(object):
         self.verticalLayout_4 = QVBoxLayout()
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.verticalLayout_4.setContentsMargins(-1, -1, -1, 10)
-        self.verticalSpacer_4 = QSpacerItem(0, 6, QSizePolicy.Minimum, QSizePolicy.Fixed)
+        self.verticalSpacer_4 = QSpacerItem(0, 3, QSizePolicy.Minimum, QSizePolicy.Fixed)
 
         self.verticalLayout_4.addItem(self.verticalSpacer_4)
 
@@ -390,7 +390,7 @@ class Ui_StartPage(object):
 
         self.verticalLayout_4.addLayout(self.horizontalLayout_4)
 
-        self.verticalSpacer_5 = QSpacerItem(0, 12, QSizePolicy.Minimum, QSizePolicy.Fixed)
+        self.verticalSpacer_5 = QSpacerItem(0, 5, QSizePolicy.Minimum, QSizePolicy.Fixed)
 
         self.verticalLayout_4.addItem(self.verticalSpacer_5)
 
@@ -424,15 +424,9 @@ class Ui_StartPage(object):
         self.listWidget.setFocusPolicy(Qt.NoFocus)
         self.listWidget.setStyleSheet(u"QListWidget:item\n"
 "{\n"
-"padding: 3px 8px;\n"
+"padding: 1px 8px;\n"
 "background-color: #eaefff;\n"
 "border: 1px outset black;\n"
-"}\n"
-"\n"
-"QListWidget::item:selected\n"
-"{\n"
-"background-color: #aaafff;\n"
-"border: 3px outset black;\n"
 "}\n"
 "\n"
 "QScrollBar:vertical\n"
@@ -457,12 +451,12 @@ class Ui_StartPage(object):
 
         self.verticalLayout_2.addLayout(self.horizontalLayout)
 
-        self.verticalSpacer_2 = QSpacerItem(0, 15, QSizePolicy.Minimum, QSizePolicy.MinimumExpanding)
+        self.verticalSpacer_2 = QSpacerItem(0, 5, QSizePolicy.Minimum, QSizePolicy.MinimumExpanding)
 
         self.verticalLayout_2.addItem(self.verticalSpacer_2)
 
-        self.verticalLayout_2.setStretch(3, 3)
-        self.verticalLayout_2.setStretch(6, 4)
+        self.verticalLayout_2.setStretch(4, 4)
+        self.verticalLayout_2.setStretch(5, 1)
         QWidget.setTabOrder(self.pushButton_input_L, self.pushButton_input_M)
         QWidget.setTabOrder(self.pushButton_input_M, self.pushButton_input_N)
         QWidget.setTabOrder(self.pushButton_input_N, self.pushButton_input_O)

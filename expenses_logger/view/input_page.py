@@ -18,7 +18,7 @@ from PySide2.QtCore import QCoreApplication, Signal
 
 
 class InputPage(QWizardPage, Ui_InputPage):
-    # leave_start_page = pyqtSignal(str)
+    leave_input_page = Signal(str, str)
 
     def __init__(self, parent: QWizard) -> None:
         QWizardPage.__init__(self)
@@ -28,6 +28,7 @@ class InputPage(QWizardPage, Ui_InputPage):
 
         # connections
         self.pushButton_back.clicked.connect(self.back_button_clicked)
+        """
         self.pushButton_save_back.clicked.connect(self.back_and_save_button_clicked)
         self.pushButton_remove_selected_items.clicked.connect(
             self.remove_selected_items
@@ -179,20 +180,7 @@ class InputPage(QWizardPage, Ui_InputPage):
             name = self.label_name.text()
             self.leave_input_page.emit(name, self.label_total_amount.text())
 
-    def back_button_clicked(self):
-        if self.listWidget_inputs.count() == 0:
-            name = self.label_name.text()
-            self.leave_input_page.emit(name, "")
-            return
-
-        dialog = InputBackDialog(self)
-        dialog.exec()
-
-        if InputBackDialog.is_last_response_yes:
-            QCoreApplication.processEvents()
-
-            name = self.label_name.text()
-            self.leave_input_page.emit(name, "")
+   
 
     def remove_selected_items(self):
         dialog = RemoveEntriesDialog(self)
@@ -215,3 +203,29 @@ class InputPage(QWizardPage, Ui_InputPage):
         trailing_text = to_trailing_text.lstrip("0")
         return trailing_text + rest_text
 """
+
+    def back_button_clicked(self) -> None:
+        if self.listWidget_inputs.count() == 0:
+            name = self.label_name.text()
+            self.leave_input_page.emit(name, "")
+            return
+
+        dialog = InputBackDialog(self)
+        dialog.exec()
+
+        if InputBackDialog.is_last_response_yes:
+            QCoreApplication.processEvents()
+
+            name = self.label_name.text()
+            self.leave_input_page.emit(name, "")
+
+    def delete_input(self) -> None:
+        text = self.lineEdit_input.text()
+
+        for _ in range(len(text)):
+            self.lineEdit_input_digit(False, "DEL")
+
+    def delete_entries(self) -> None:
+        self.listWidget_inputs.clear()
+        self.label_total_amount.setText("0,00 €")
+        self.pushButton_save_back.setEnabled(False)

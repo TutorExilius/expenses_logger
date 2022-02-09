@@ -102,7 +102,6 @@ class StartPage(QWizardPage, Ui_StartPage):
         item = self.listWidget.selectedItems()[0]
         user_name = self.listWidget.itemWidget(item)._origin_user_name
 
-        print("ich wurde geklickt", user_name)
         self.leave_start_page.emit(user_name)
 
     def show_filtered_user_list(self) -> None:
