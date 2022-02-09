@@ -12,7 +12,9 @@ from src.view.remove_entries_dialog import RemoveEntriesDialog
 """
 
 from expenses_logger.view.ui.ui_input_page import Ui_InputPage
-from PySide6.QtWidgets import QWizard, QWizardPage
+from expenses_logger.view.input_back_dialog import InputBackDialog
+from PySide2.QtWidgets import QWizard, QWizardPage
+from PySide2.QtCore import QCoreApplication, Signal
 
 
 class InputPage(QWizardPage, Ui_InputPage):
@@ -21,7 +23,9 @@ class InputPage(QWizardPage, Ui_InputPage):
     def __init__(self, parent: QWizard) -> None:
         QWizardPage.__init__(self)
         self.setupUi(self)
-        """
+
+        self.pushButton_remove_selected_items.setText("🗑")
+
         # connections
         self.pushButton_back.clicked.connect(self.back_button_clicked)
         self.pushButton_save_back.clicked.connect(self.back_and_save_button_clicked)

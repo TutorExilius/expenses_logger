@@ -1,7 +1,9 @@
 import sys
 from expenses_logger.globals import USERS
 
-from PySide6.QtWidgets import QApplication
+from asyncqt import QEventLoop
+from PySide2.QtWidgets import QApplication
+from PySide2.QtCore import QSize
 
 from expenses_logger.view.main_wizard import MainWizard
 

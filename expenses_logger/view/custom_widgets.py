@@ -1,5 +1,5 @@
 from expenses_logger.logic.helper import cents_to_euro
-from PySide6.QtWidgets import QHBoxLayout, QLabel, QSizePolicy, QSpacerItem, QWidget
+from PySide2.QtWidgets import QHBoxLayout, QLabel, QSizePolicy, QSpacerItem, QWidget
 
 
 class ListItem(QWidget):

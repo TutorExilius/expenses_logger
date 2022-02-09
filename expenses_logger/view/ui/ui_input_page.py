@@ -8,17 +8,10 @@
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-    QMetaObject, QObject, QPoint, QRect,
-    QSize, QTime, QUrl, Qt)
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QAbstractItemView, QApplication, QGridLayout, QHBoxLayout,
-    QLabel, QLineEdit, QListWidget, QListWidgetItem,
-    QPushButton, QSizePolicy, QSpacerItem, QVBoxLayout,
-    QWidget, QWizardPage)
+from PySide2.QtCore import *
+from PySide2.QtGui import *
+from PySide2.QtWidgets import *
+
 
 class Ui_InputPage(object):
     def setupUi(self, InputPage):
@@ -137,6 +130,7 @@ class Ui_InputPage(object):
         font3 = QFont()
         font3.setPointSize(18)
         font3.setBold(False)
+        font3.setWeight(50)
         self.label_total_amount.setFont(font3)
         self.label_total_amount.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
@@ -361,7 +355,7 @@ class Ui_InputPage(object):
         self.pushButton_back.setText(QCoreApplication.translate("InputPage", u"\u2190 zur\u00fcck", None))
         self.label_name.setText(QCoreApplication.translate("InputPage", u"Name", None))
         self.label_inputs.setText(QCoreApplication.translate("InputPage", u"Eingaben:", None))
-        self.pushButton_remove_selected_items.setText(QCoreApplication.translate("InputPage", u"\U0001F5D1", None))
+        self.pushButton_remove_selected_items.setText(QCoreApplication.translate("InputPage", u"Del", None))
         self.label_total_title.setText(QCoreApplication.translate("InputPage", u"Gesamt:", None))
         self.label_total_amount.setText(QCoreApplication.translate("InputPage", u"0,00 \u20ac", None))
         self.label_amount_input.setText(QCoreApplication.translate("InputPage", u"Betrag", None))

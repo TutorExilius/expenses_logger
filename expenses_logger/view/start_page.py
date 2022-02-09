@@ -2,13 +2,13 @@ from functools import partial
 from typing import List
 
 from expenses_logger.view.ui.ui_start_page import Ui_StartPage
-from PySide6.QtWidgets import (
+from PySide2.QtWidgets import (
     QListWidgetItem,
     QPushButton,
     QWizard,
     QWizardPage,
 )
-from PySide6.QtCore import Signal
+from PySide2.QtCore import Signal
 
 from expenses_logger.view.custom_widgets import ListItem
 

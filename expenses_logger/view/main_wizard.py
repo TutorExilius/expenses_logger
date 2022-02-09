@@ -19,8 +19,8 @@ from expenses_logger.logic.helper import (
 from expenses_logger.view.start_page import StartPage
 
 from expenses_logger.view.input_page import InputPage
-from PySide6.QtCore import QSize, Slot
-from PySide6.QtWidgets import QWidget, QWizard
+from PySide2.QtCore import QSize, Slot
+from PySide2.QtWidgets import QWidget, QWizard
 
 
 class PageNumber(Enum):

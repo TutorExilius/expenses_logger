@@ -8,17 +8,10 @@
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-    QMetaObject, QObject, QPoint, QRect,
-    QSize, QTime, QUrl, Qt)
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QAbstractItemView, QApplication, QFrame, QHBoxLayout,
-    QLabel, QLayout, QLineEdit, QListWidget,
-    QListWidgetItem, QPushButton, QSizePolicy, QSpacerItem,
-    QVBoxLayout, QWidget, QWizardPage)
+from PySide2.QtCore import *
+from PySide2.QtGui import *
+from PySide2.QtWidgets import *
+
 
 class Ui_StartPage(object):
     def setupUi(self, StartPage):
@@ -29,10 +22,6 @@ class Ui_StartPage(object):
         self.verticalLayout_2 = QVBoxLayout(StartPage)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(16, 16, 16, 16)
-        self.verticalSpacer_3 = QSpacerItem(0, 5, QSizePolicy.Minimum, QSizePolicy.Fixed)
-
-        self.verticalLayout_2.addItem(self.verticalSpacer_3)
-
         self.verticalLayout = QVBoxLayout()
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.label_title = QLabel(StartPage)
@@ -431,9 +420,7 @@ class Ui_StartPage(object):
         self.listWidget.setSizePolicy(sizePolicy1)
         self.listWidget.setMinimumSize(QSize(523, 80))
         self.listWidget.setMaximumSize(QSize(16777215, 400))
-        font4 = QFont()
-        font4.setPointSize(18)
-        self.listWidget.setFont(font4)
+        self.listWidget.setFont(font2)
         self.listWidget.setFocusPolicy(Qt.NoFocus)
         self.listWidget.setStyleSheet(u"QListWidget:item\n"
 "{\n"

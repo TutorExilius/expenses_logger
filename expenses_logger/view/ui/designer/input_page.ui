@@ -245,7 +245,7 @@
               <enum>Qt::NoFocus</enum>
              </property>
              <property name="text">
-              <string>🗑</string>
+              <string>Del</string>
              </property>
             </widget>
            </item>

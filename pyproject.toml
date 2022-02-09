@@ -42,10 +42,10 @@ authors = ["Tutor Exilius <tutorexilius@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = ">=3.9,<3.11"
-PySide6 = "^6.2.2"
 alembic = "^1.7.5"
 toml = "^0.10.2"
 aiofile = "^3.7.4"
+PySide2 = "^5.15.2"
 asyncqt = "^0.8.0"
 
 [tool.poetry.dev-dependencies]
