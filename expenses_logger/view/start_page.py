@@ -133,7 +133,7 @@ class StartPage(QWizardPage, Ui_StartPage):
         self.lineEdit.setCursorPosition(len(self.lineEdit.text()))
         event.accept()
 
-    def _clear_list_widget(self):
+    def _clear_list_widget(self) -> None:
         self.blockSignals(True)
         self.listWidget.clearSelection()
         self.listWidget.clear()
