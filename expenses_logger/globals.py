@@ -9,7 +9,9 @@ SYNC_NAS_DIR = "c:/tmp/"
 DATABASE_URL = f"sqlite:///home/pi/Desktop/apps/{DATABASE_FILE}"
 DATABASE_URL = f"sqlite:///{DATABASE_FILE}"
 USERS = [
-    "Tutor",
-    "Thomas",
-    "blowfish",
+    "Tutor Exilius",
+    "Thomas 485",
+    "Blowfish Fugu",
+    "T.B. Schneider",
+    "KeYoS 2",
 ]

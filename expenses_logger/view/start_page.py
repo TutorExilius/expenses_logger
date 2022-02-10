@@ -1,16 +1,15 @@
 from functools import partial
 from typing import List
 
+from expenses_logger.view.custom_widgets import ListItem
 from expenses_logger.view.ui.ui_start_page import Ui_StartPage
+from PySide2.QtCore import QEvent, Qt, Signal
 from PySide2.QtWidgets import (
     QListWidgetItem,
     QPushButton,
     QWizard,
     QWizardPage,
 )
-from PySide2.QtCore import Signal, QEvent, Qt
-
-from expenses_logger.view.custom_widgets import ListItem
 
 
 class StartPage(QWizardPage, Ui_StartPage):
@@ -20,7 +19,7 @@ class StartPage(QWizardPage, Ui_StartPage):
         QWizardPage.__init__(self)
         self.setupUi(self)
 
-        self.users = ["Thomas", "Thompsen", "Ulf", "Ulli", "Tutor", "Wie-ihr-wollt"]
+        self.users = sorted(user_names, key=lambda name: name.lower())
         self.refresh_user_list(self.users)
 
         # connections
