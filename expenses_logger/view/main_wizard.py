@@ -1,6 +1,6 @@
 import asyncio
 
-# from datetime import datetime
+from datetime import datetime
 from enum import auto, Enum
 from pathlib import Path
 from typing import List
@@ -39,7 +39,7 @@ class MainWizard(QWizard):
 
         super().__init__(parent)
 
-        self.setWizardStyle(QWizard.ModernStyle)
+        self.setWizardStyle(QWizard.NStyles)
         self.setButtonLayout([])
 
         self.user_names = user_names
@@ -48,16 +48,16 @@ class MainWizard(QWizard):
         self._pages[PageNumber.START_PAGE] = self.addPage(StartPage(self, user_names))
         self._pages[PageNumber.INPUT_PAGE] = self.addPage(InputPage(self))
 
-        # self.update_year_label(datetime.utcnow().year)
+        self.update_year_label(datetime.utcnow().year)
 
         # self.setModal(False)
 
         # if desktop_size is not None:
         #    self.setFixedSize(desktop_size)
 
-        # self.setWindowFlag(QtCore.Qt.FramelessWindowHint, True)
-        # self.setWindowFlag(QtCore.Qt.WindowStaysOnTopHint, True)
-        # self.setWindowState(self.windowState() | QtCore.Qt.WindowFullScreen)
+        self.setWindowFlag(Qt.FramelessWindowHint, True)
+        self.setWindowFlag(Qt.WindowStaysOnTopHint, True)
+        self.setWindowState(self.windowState() | Qt.WindowFullScreen)
 
         # connections
         self.page(self._pages[PageNumber.START_PAGE]).leave_start_page.connect(
@@ -70,7 +70,7 @@ class MainWizard(QWizard):
     def update_year_label(self, year: int) -> None:
         start_page = self.page(self._pages[PageNumber.START_PAGE])
         start_page.label_year.setText(str(year))
-        self.update_amounts()
+        # self.update_amounts()
 
     def update_amounts(self) -> None:
         start_page = self.page(self._pages[PageNumber.START_PAGE])
