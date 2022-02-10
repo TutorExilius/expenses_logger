@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>860</width>
-    <height>480</height>
+    <width>787</width>
+    <height>487</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -82,7 +82,7 @@
          </property>
          <property name="sizeHint" stdset="0">
           <size>
-           <width>45</width>
+           <width>35</width>
            <height>0</height>
           </size>
          </property>
@@ -833,13 +833,13 @@
          </property>
          <property name="minimumSize">
           <size>
-           <width>246</width>
+           <width>237</width>
            <height>40</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>246</width>
+           <width>237</width>
            <height>40</height>
           </size>
          </property>
