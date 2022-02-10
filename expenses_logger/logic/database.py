@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import List
+from typing import List, Dict
 
 from expenses_logger import globals
 from expenses_logger.model.models import Entry, User
@@ -14,6 +14,34 @@ def initialize_new_database() -> None:
     print("Create new database...")
     initialize_new_users(globals.USERS)
     print("Database created:", globals.DATABASE_URL)
+
+
+def get_user_amounts() -> Dict[str, int]:
+    selected_year = datetime.utcnow().year
+    current_user_amount_map = {
+        user_name: get_total_amount_in_cents(user_name, selected_year)
+        for user_name in get_user_names()
+    }
+
+    oldest_year = get_oldest_year()
+    last_years_total_user_amount_map = {user_name: 0 for user_name in get_user_names()}
+
+    for year in range(oldest_year, selected_year):
+        for user_name in current_user_amount_map.keys():
+            last_years_total_user_amount_map[user_name] += get_total_amount_in_cents(
+                user_name, year
+            )
+
+    minimum_amount = min(last_years_total_user_amount_map.values())
+    for user_name in current_user_amount_map.keys():
+        last_years_total_user_amount_map[user_name] -= minimum_amount
+
+    for user_name in current_user_amount_map.keys():
+        current_user_amount_map[user_name] += last_years_total_user_amount_map[
+            user_name
+        ]
+
+    return current_user_amount_map
 
 
 def empty_database() -> None:
@@ -75,12 +103,12 @@ def get_total_amount_in_cents(user_name: str, year: int) -> int:
                 f"Can't update amount for user '{user_name}', User not found."
             )
 
-        entries_in_year = (
+        entry_amounts_in_year = (
             entry.amount_in_cents
             for entry in user.entries
             if entry.created_at.year == year
         )
-        return sum(entry for entry in entries_in_year)
+        return sum(entry_amounts_in_year)
 
 
 def get_oldest_year() -> int:
@@ -98,7 +126,8 @@ def get_oldest_year() -> int:
                 )
 
             if user.entries:
-                year = user.entries[0].created_at.year
+                user_entries = sorted(user.entries, key=lambda entry: entry.created_at)
+                year = user_entries[0].created_at.year
                 if oldest_year > year:
                     oldest_year = year
 

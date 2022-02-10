@@ -157,13 +157,16 @@ class MainWizard(QWizard):
                 user_name=user_name,
                 amount_in_cents=int_amount,
             )
-            self.update_amounts()
+            # self.update_amounts()
 
             print("Try syncing database...")
             src_database = Path(__file__).parent.parent.parent / globals.DATABASE_FILE
             target_database = Path(globals.SYNC_NAS_DIR)
             loop = asyncio.get_event_loop()
             loop.create_task(sync_database(src_database, target_database))
+
+            start_page = self.page(self._pages[PageNumber.START_PAGE])
+            start_page.reload_user_amounts()
 
         super().back()
 

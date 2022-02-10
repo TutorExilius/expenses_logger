@@ -3,6 +3,7 @@ from typing import List
 
 from expenses_logger.view.custom_widgets import ListItem
 from expenses_logger.view.ui.ui_start_page import Ui_StartPage
+from expenses_logger.logic.database import get_user_amounts
 from PySide2.QtCore import QEvent, Qt, Signal
 from PySide2.QtWidgets import (
     QListWidgetItem,
@@ -20,6 +21,8 @@ class StartPage(QWizardPage, Ui_StartPage):
         self.setupUi(self)
 
         self.users = sorted(user_names, key=lambda name: name.casefold())
+        self.user_amount_map = get_user_amounts()
+
         self.refresh_user_list(self.users)
 
         # connections
@@ -41,6 +44,9 @@ class StartPage(QWizardPage, Ui_StartPage):
         # self.pushButton_name_2.clicked.connect(partial
         # (self.button_clicked, False, user_names[1]))
 
+    def reload_user_amounts(self) -> None:
+        self.user_amount_map = get_user_amounts()
+
     def line_edit_clear(self) -> None:
         self.lineEdit.clear()
         self.pushButton_clear.setEnabled(False)
@@ -52,7 +58,10 @@ class StartPage(QWizardPage, Ui_StartPage):
         self._clear_list_widget()
 
         for user_name in sorted(userlist):
-            self.add_item_in_list_widget(title=user_name, user_name=user_name)
+            amount_in_cent = self.user_amount_map[user_name]
+            self.add_item_in_list_widget(
+                title=user_name, user_name=user_name, amount_in_cent=amount_in_cent
+            )
 
         if len(userlist) <= 1:
             self.frame_letters.setEnabled(False)
@@ -87,10 +96,13 @@ class StartPage(QWizardPage, Ui_StartPage):
                 title=f"<font color=red>{matched_name_part}</font>"
                 f"{remaining_name_part}",
                 user_name=user_name,
+                amount_in_cent=self.user_amount_map[user_name],
             )
 
-    def add_item_in_list_widget(self, title: str, user_name: str) -> None:
-        item_widget = ListItem(title, 0)
+    def add_item_in_list_widget(
+        self, title: str, user_name: str, amount_in_cent: int
+    ) -> None:
+        item_widget = ListItem(title, amount_in_cent)
         item_widget._origin_user_name = user_name
 
         item = QListWidgetItem()
