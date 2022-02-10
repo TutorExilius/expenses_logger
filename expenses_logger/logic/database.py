@@ -4,9 +4,10 @@ from typing import List
 from expenses_logger import globals
 from expenses_logger.model.models import Entry, User
 from sqlalchemy import create_engine
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import sessionmaker, load_only
 
 engine = create_engine(globals.DATABASE_URL)
+Session = sessionmaker(engine)
 
 
 def initialize_new_database() -> None:
@@ -25,7 +26,7 @@ def empty_database() -> None:
 
 
 def delete_all_users() -> None:
-    with Session(engine) as session:
+    with Session() as session:
         for user in session.query(User).all():
             print(f"Delete '{user.user_name}' ...")
             session.delete(user)
@@ -35,7 +36,7 @@ def delete_all_users() -> None:
 
 
 def initialize_new_users(user_names: List[str]) -> None:
-    with Session(engine) as session:
+    with Session() as session:
         print("Create new users...")
 
         for user_name in user_names:
@@ -48,7 +49,7 @@ def initialize_new_users(user_names: List[str]) -> None:
 
 
 def add_amount(user_name: str, amount_in_cents: int) -> None:
-    with Session(engine) as session:
+    with Session() as session:
         user = session.query(User).filter_by(user_name=user_name).one_or_none()
 
         if user is None:
@@ -66,7 +67,7 @@ def add_amount(user_name: str, amount_in_cents: int) -> None:
 
 
 def get_total_amount_in_cents(user_name: str, year: int) -> int:
-    with Session(engine) as session:
+    with Session() as session:
         user = session.query(User).filter_by(user_name=user_name).one_or_none()
 
         if user is None:
@@ -83,7 +84,7 @@ def get_total_amount_in_cents(user_name: str, year: int) -> int:
 
 
 def get_oldest_year() -> int:
-    with Session(engine) as session:
+    with Session() as session:
         user_names = globals.USERS
 
         oldest_year = datetime.utcnow().year
@@ -102,3 +103,11 @@ def get_oldest_year() -> int:
                     oldest_year = year
 
     return oldest_year
+
+
+def get_user_names() -> List[str]:
+    with Session() as session:
+
+        users = session.query(User).options(load_only("user_name")).all()
+
+    return [user.user_name for user in users]
