@@ -15,6 +15,7 @@ from functools import partial
 from expenses_logger.logic.helper import (
     max_digits_behind_comma_arrived,
     remove_leading_zeros,
+    cents_to_euro,
 )
 from expenses_logger.view.input_back_dialog import InputBackDialog
 from expenses_logger.view.remove_entries_dialog import RemoveEntriesDialog
@@ -80,13 +81,14 @@ class InputPage(QWizardPage, Ui_InputPage):
         self.listWidget_inputs.itemSelectionChanged.connect(
             self.entries_selection_changed
         )
+        self.listWidget_inputs.model().rowsRemoved.connect(self.entries_changed)
+        self.listWidget_inputs.model().rowsInserted.connect(self.entries_changed)
 
         """
         self.pushButton_save_back.clicked.connect(self.back_and_save_button_clicked)
 
 
-        self.listWidget_inputs.model().rowsRemoved.connect(self.entries_changed)
-        self.listWidget_inputs.model().rowsInserted.connect(self.entries_changed)
+       
         self.pushButton_0.clicked.connect(
             partial(self.lineEdit_input_digit, False, "0")
         )
@@ -133,34 +135,7 @@ class InputPage(QWizardPage, Ui_InputPage):
         self.pushButton_save_back.setEnabled(False)
 
    
-    def entries_changed(self):
-        print("entires changed")
-        if self.listWidget_inputs.count():
-            self.pushButton_save_back.setEnabled(True)
-        else:
-            self.pushButton_save_back.setEnabled(False)
-
-        total_amout_cents = 0
-
-        for i in range(self.listWidget_inputs.count()):
-            item = self.listWidget_inputs.item(i).text()
-            item = item.replace(",", "")
-            total_amout_cents += int(item)
-
-        if total_amout_cents == 0:
-            self.label_total_amount.setText("0,00 €")
-        else:
-            new_text = str(total_amout_cents)
-            new_text = new_text[:-2] + "," + new_text[-2:]
-
-            if new_text.startswith(","):
-                if len(new_text) == 2:
-                    new_text = new_text.replace(",", "0,0")
-                else:
-                    new_text = new_text.replace(",", "0,")
-
-            self.label_total_amount.setText(new_text + " €")
-
+ 
 
 
     def back_and_save_button_clicked(self):
@@ -218,6 +193,24 @@ class InputPage(QWizardPage, Ui_InputPage):
         else:
             self.pushButton_del.setEnabled(False)
             self.pushButton_add.setEnabled(False)
+
+    def entries_changed(self) -> None:
+        if self.listWidget_inputs.count():
+            self.pushButton_save_back.setEnabled(True)
+        else:
+            self.pushButton_save_back.setEnabled(False)
+
+        total_amout_cents = 0
+
+        for i in range(self.listWidget_inputs.count()):
+            item = self.listWidget_inputs.item(i).text()
+            item = item.replace(",", "")
+            total_amout_cents += int(item)
+
+        if total_amout_cents == 0:
+            self.label_total_amount.setText("0,00 €")
+        else:
+            self.label_total_amount.setText(cents_to_euro(total_amout_cents))
 
     def entries_selection_changed(self) -> None:
         selected_items = self.listWidget_inputs.selectedItems()
