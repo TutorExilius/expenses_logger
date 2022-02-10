@@ -1,9 +1,9 @@
-from expenses_logger.view.ui.ui_input_back_dialog import Ui_InputBackDialog
+from expenses_logger.view.ui.ui_remove_entries_dialog import Ui_RemoveEntriesDialog
 from PySide2.QtWidgets import QDialog, QWizard
 from PySide2.QtCore import Qt
 
 
-class InputBackDialog(QDialog, Ui_InputBackDialog):
+class RemoveEntriesDialog(QDialog, Ui_RemoveEntriesDialog):
     is_last_response_yes = False
 
     def __init__(self, parent: QWizard) -> None:
@@ -20,9 +20,9 @@ class InputBackDialog(QDialog, Ui_InputBackDialog):
         self.pushButton_no.clicked.connect(self.response_no, Qt.UniqueConnection)
 
     def response_yes(self) -> None:
-        InputBackDialog.is_last_response_yes = True
+        RemoveEntriesDialog.is_last_response_yes = True
         self.close()
 
     def response_no(self) -> None:
-        InputBackDialog.is_last_response_yes = False
+        RemoveEntriesDialog.is_last_response_yes = False
         self.close()

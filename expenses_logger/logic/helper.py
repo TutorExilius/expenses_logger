@@ -9,6 +9,17 @@ from aiofile import async_open
 in_syncing_lock = asyncio.Lock()
 
 
+def remove_leading_zeros(text: str) -> str:
+    before_first_digit_of_integer_part = -4
+    # ex: v              v---before_first_digit_of_integer_part
+    # ......1,99..or....1234,99
+
+    to_trailing_text = text[0:before_first_digit_of_integer_part]
+    rest_text = text[before_first_digit_of_integer_part:]
+    trailing_text = to_trailing_text.lstrip("0")
+    return trailing_text + rest_text
+
+
 def print_log(page_name: str, username: str, action: str) -> None:
     print(
         f"{datetime.now():%Y-%m-%d %H:%M:%S} from [{page_name}]: '{username}' {action}."
