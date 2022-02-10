@@ -19,7 +19,7 @@ class StartPage(QWizardPage, Ui_StartPage):
         QWizardPage.__init__(self)
         self.setupUi(self)
 
-        self.users = sorted(user_names, key=lambda name: name.lower())
+        self.users = sorted(user_names, key=lambda name: name.casefold())
         self.refresh_user_list(self.users)
 
         # connections
