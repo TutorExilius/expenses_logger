@@ -8,7 +8,7 @@ from PySide2.QtWidgets import (
     QWizard,
     QWizardPage,
 )
-from PySide2.QtCore import Signal
+from PySide2.QtCore import Signal, QEvent, Qt
 
 from expenses_logger.view.custom_widgets import ListItem
 
@@ -24,12 +24,16 @@ class StartPage(QWizardPage, Ui_StartPage):
         self.refresh_user_list(self.users)
 
         # connections
-        self.pushButton_clear.clicked.connect(self.line_edit_clear)
-        self.listWidget.itemSelectionChanged.connect(self.selection_name_clicked)
+        self.pushButton_clear.clicked.connect(self.line_edit_clear, Qt.UniqueConnection)
+        self.listWidget.itemSelectionChanged.connect(
+            self.selection_name_clicked, Qt.UniqueConnection
+        )
+
         for button_letter in self.frame_letters.children():
             if isinstance(button_letter, QPushButton):
                 button_letter.clicked.connect(
-                    partial(self.letter_button_clicked, button_letter.text())
+                    partial(self.letter_button_clicked, button_letter.text()),
+                    Qt.UniqueConnection,
                 )
 
         self.lineEdit.mousePressEvent = self.set_cursor_to_end
@@ -46,7 +50,7 @@ class StartPage(QWizardPage, Ui_StartPage):
     def refresh_user_list(
         self, userlist: List[str], highlight_match: bool = False
     ) -> None:
-        self.listWidget.clear()
+        self._clear_list_widget()
 
         for user_name in sorted(userlist):
             self.add_item_in_list_widget(title=user_name, user_name=user_name)
@@ -57,7 +61,7 @@ class StartPage(QWizardPage, Ui_StartPage):
             self.frame_letters.setEnabled(True)
 
     def filter_userlist(self, matched_user_names: List[str]) -> None:
-        self.listWidget.clear()
+        self._clear_list_widget()
 
         if len(matched_user_names) <= 1:
             self.frame_letters.setEnabled(False)
@@ -105,7 +109,7 @@ class StartPage(QWizardPage, Ui_StartPage):
         self.leave_start_page.emit(user_name)
 
     def show_filtered_user_list(self) -> None:
-        self.listWidget.clear()
+        self._clear_list_widget()
 
         pattern = self.lineEdit.text().lower()
         matched_user_names = []
@@ -125,5 +129,12 @@ class StartPage(QWizardPage, Ui_StartPage):
         self.lineEdit.insert(letter)
         self.show_filtered_user_list()
 
-    def set_cursor_to_end(self, *args: object, **kwargs: object) -> None:
+    def set_cursor_to_end(self, event: QEvent) -> None:
         self.lineEdit.setCursorPosition(len(self.lineEdit.text()))
+        event.accept()
+
+    def _clear_list_widget(self):
+        self.blockSignals(True)
+        self.listWidget.clearSelection()
+        self.listWidget.clear()
+        self.blockSignals(False)

@@ -436,7 +436,7 @@ class Ui_StartPage(object):
         self.listWidget.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         self.listWidget.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.listWidget.setSelectionMode(QAbstractItemView.SingleSelection)
-        self.listWidget.setSelectionBehavior(QAbstractItemView.SelectRows)
+        self.listWidget.setSelectionBehavior(QAbstractItemView.SelectItems)
         self.listWidget.setSpacing(6)
 
         self.verticalLayout_3.addWidget(self.listWidget)

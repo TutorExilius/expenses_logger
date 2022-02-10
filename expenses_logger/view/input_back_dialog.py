@@ -15,8 +15,8 @@ class InputBackDialog(QDialog, Ui_InputBackDialog):
         self.setWindowFlag(Qt.WindowMinMaxButtonsHint, False)
 
         # connections
-        self.pushButton_yes.clicked.connect(self.response_yes)
-        self.pushButton_no.clicked.connect(self.response_no)
+        self.pushButton_yes.clicked.connect(self.response_yes, Qt.UniqueConnection)
+        self.pushButton_no.clicked.connect(self.response_no, Qt.UniqueConnection)
 
     def response_yes(self) -> None:
         InputBackDialog.is_last_response_yes = True

@@ -14,7 +14,7 @@ from src.view.remove_entries_dialog import RemoveEntriesDialog
 from expenses_logger.view.ui.ui_input_page import Ui_InputPage
 from expenses_logger.view.input_back_dialog import InputBackDialog
 from PySide2.QtWidgets import QWizard, QWizardPage
-from PySide2.QtCore import QCoreApplication, Signal
+from PySide2.QtCore import QCoreApplication, Signal, Qt
 
 
 class InputPage(QWizardPage, Ui_InputPage):
@@ -27,7 +27,9 @@ class InputPage(QWizardPage, Ui_InputPage):
         self.pushButton_remove_selected_items.setText("🗑")
 
         # connections
-        self.pushButton_back.clicked.connect(self.back_button_clicked)
+        self.pushButton_back.clicked.connect(
+            self.back_button_clicked, Qt.UniqueConnection
+        )
         """
         self.pushButton_save_back.clicked.connect(self.back_and_save_button_clicked)
         self.pushButton_remove_selected_items.clicked.connect(
