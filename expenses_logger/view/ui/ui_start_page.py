@@ -17,7 +17,7 @@ class Ui_StartPage(object):
     def setupUi(self, StartPage):
         if not StartPage.objectName():
             StartPage.setObjectName(u"StartPage")
-        StartPage.resize(897, 510)
+        StartPage.resize(816, 601)
         StartPage.setStyleSheet(u"")
         self.verticalLayout_2 = QVBoxLayout(StartPage)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
@@ -390,7 +390,7 @@ class Ui_StartPage(object):
 
         self.verticalLayout_4.addLayout(self.horizontalLayout_4)
 
-        self.verticalSpacer_5 = QSpacerItem(0, 5, QSizePolicy.Minimum, QSizePolicy.Fixed)
+        self.verticalSpacer_5 = QSpacerItem(0, 25, QSizePolicy.Minimum, QSizePolicy.Fixed)
 
         self.verticalLayout_4.addItem(self.verticalSpacer_5)
 
@@ -418,8 +418,7 @@ class Ui_StartPage(object):
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.listWidget.sizePolicy().hasHeightForWidth())
         self.listWidget.setSizePolicy(sizePolicy1)
-        self.listWidget.setMinimumSize(QSize(523, 80))
-        self.listWidget.setMaximumSize(QSize(16777215, 400))
+        self.listWidget.setMinimumSize(QSize(533, 150))
         self.listWidget.setFont(font2)
         self.listWidget.setFocusPolicy(Qt.NoFocus)
         self.listWidget.setStyleSheet(u"QListWidget:item\n"
@@ -455,8 +454,9 @@ class Ui_StartPage(object):
 
         self.verticalLayout_2.addItem(self.verticalSpacer_2)
 
-        self.verticalLayout_2.setStretch(4, 4)
-        self.verticalLayout_2.setStretch(5, 1)
+        self.verticalLayout_2.setStretch(2, 1)
+        self.verticalLayout_2.setStretch(4, 6)
+        self.verticalLayout_2.setStretch(5, 2)
         QWidget.setTabOrder(self.pushButton_input_L, self.pushButton_input_M)
         QWidget.setTabOrder(self.pushButton_input_M, self.pushButton_input_N)
         QWidget.setTabOrder(self.pushButton_input_N, self.pushButton_input_O)
