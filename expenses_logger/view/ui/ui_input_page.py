@@ -93,7 +93,17 @@ class Ui_InputPage(object):
         self.listWidget_inputs.setMaximumSize(QSize(130, 16777215))
         self.listWidget_inputs.setFont(font1)
         self.listWidget_inputs.setFocusPolicy(Qt.NoFocus)
-        self.listWidget_inputs.setStyleSheet(u"background-color: white;")
+        self.listWidget_inputs.setStyleSheet(u"\n"
+"QListWidget:item\n"
+"{\n"
+"background-color: white;\n"
+"padding: 0px 6px;\n"
+"}\n"
+"\n"
+"QScrollBar:vertical\n"
+"{\n"
+"width: 25px;\n"
+"}")
         self.listWidget_inputs.setSelectionMode(QAbstractItemView.MultiSelection)
 
         self.verticalLayout_4.addWidget(self.listWidget_inputs)

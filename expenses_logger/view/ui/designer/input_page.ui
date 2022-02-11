@@ -201,7 +201,17 @@
             <enum>Qt::NoFocus</enum>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: white;</string>
+            <string notr="true">
+QListWidget:item
+{
+background-color: white;
+padding: 0px 6px;
+}
+
+QScrollBar:vertical
+{
+width: 25px;
+}</string>
            </property>
            <property name="selectionMode">
             <enum>QAbstractItemView::MultiSelection</enum>

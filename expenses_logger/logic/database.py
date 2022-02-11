@@ -1,10 +1,10 @@
 from datetime import datetime
-from typing import List, Dict
+from typing import Dict, List
 
 from expenses_logger import globals
 from expenses_logger.model.models import Entry, User
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, load_only
+from sqlalchemy.orm import load_only, sessionmaker
 
 engine = create_engine(globals.DATABASE_URL)
 Session = sessionmaker(engine)
@@ -136,7 +136,6 @@ def get_oldest_year() -> int:
 
 def get_user_names() -> List[str]:
     with Session() as session:
-
         users = session.query(User).options(load_only("user_name")).all()
 
     return [user.user_name for user in users]
