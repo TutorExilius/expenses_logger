@@ -201,10 +201,8 @@
             <enum>Qt::NoFocus</enum>
            </property>
            <property name="styleSheet">
-            <string notr="true">
-QListWidget:item
+            <string notr="true">QListWidget:item
 {
-background-color: white;
 padding: 0px 6px;
 }
 

@@ -1,9 +1,9 @@
 from functools import partial
 from typing import List
 
+from expenses_logger.logic.database import get_user_amounts
 from expenses_logger.view.custom_widgets import ListItem
 from expenses_logger.view.ui.ui_start_page import Ui_StartPage
-from expenses_logger.logic.database import get_user_amounts
 from PySide2.QtCore import QEvent, Qt, Signal
 from PySide2.QtWidgets import (
     QListWidgetItem,
