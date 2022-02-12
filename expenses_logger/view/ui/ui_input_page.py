@@ -17,7 +17,7 @@ class Ui_InputPage(object):
     def setupUi(self, InputPage):
         if not InputPage.objectName():
             InputPage.setObjectName(u"InputPage")
-        InputPage.resize(787, 487)
+        InputPage.resize(661, 526)
         InputPage.setStyleSheet(u"")
         self.horizontalLayout_4 = QHBoxLayout(InputPage)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
@@ -90,7 +90,8 @@ class Ui_InputPage(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.listWidget_inputs.sizePolicy().hasHeightForWidth())
         self.listWidget_inputs.setSizePolicy(sizePolicy)
-        self.listWidget_inputs.setMaximumSize(QSize(130, 16777215))
+        self.listWidget_inputs.setMinimumSize(QSize(0, 141))
+        self.listWidget_inputs.setMaximumSize(QSize(130, 141))
         self.listWidget_inputs.setFont(font1)
         self.listWidget_inputs.setFocusPolicy(Qt.NoFocus)
         self.listWidget_inputs.setStyleSheet(u"QListWidget:item\n"
@@ -127,11 +128,19 @@ class Ui_InputPage(object):
 
         self.verticalLayout_4.addLayout(self.horizontalLayout_3)
 
+        self.verticalSpacer = QSpacerItem(0, 0, QSizePolicy.Minimum, QSizePolicy.MinimumExpanding)
+
+        self.verticalLayout_4.addItem(self.verticalSpacer)
+
+        self.verticalLayout_2 = QVBoxLayout()
+        self.verticalLayout_2.setSpacing(0)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.verticalLayout_2.setContentsMargins(-1, -1, -1, 0)
         self.label_total_title = QLabel(InputPage)
         self.label_total_title.setObjectName(u"label_total_title")
         self.label_total_title.setFont(font2)
 
-        self.verticalLayout_4.addWidget(self.label_total_title)
+        self.verticalLayout_2.addWidget(self.label_total_title)
 
         self.label_total_amount = QLabel(InputPage)
         self.label_total_amount.setObjectName(u"label_total_amount")
@@ -142,7 +151,10 @@ class Ui_InputPage(object):
         self.label_total_amount.setFont(font3)
         self.label_total_amount.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
-        self.verticalLayout_4.addWidget(self.label_total_amount)
+        self.verticalLayout_2.addWidget(self.label_total_amount)
+
+
+        self.verticalLayout_4.addLayout(self.verticalLayout_2)
 
 
         self.horizontalLayout.addLayout(self.verticalLayout_4)
