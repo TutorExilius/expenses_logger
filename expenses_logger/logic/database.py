@@ -86,9 +86,8 @@ def add_amount(user_name: str, amount_in_cents: int) -> None:
             )
 
         entry = Entry(amount_in_cents=amount_in_cents, created_at=datetime.utcnow())
-        session.add(entry)
-
         user.entries.append(entry)
+
         print(f"Added '{amount_in_cents}' for user '{user_name}'.")
 
         session.commit()
