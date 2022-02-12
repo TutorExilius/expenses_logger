@@ -23,7 +23,7 @@ class StartPage(QWizardPage, Ui_StartPage):
         self.users = sorted(user_names, key=lambda name: name.casefold())
         self.user_amount_map = get_user_amounts()
 
-        self.refresh_user_list(self.users)
+        self.refresh_user_list()
 
         # connections
         self.pushButton_clear.clicked.connect(self.line_edit_clear, Qt.UniqueConnection)
@@ -46,23 +46,21 @@ class StartPage(QWizardPage, Ui_StartPage):
     def line_edit_clear(self) -> None:
         self.lineEdit.clear()
         self.pushButton_clear.setEnabled(False)
-        self.refresh_user_list(self.users)
+        self.refresh_user_list()
 
     def update_ui(self) -> None:
-        self.refresh_user_list(self.users)
+        self.refresh_user_list()
 
-    def refresh_user_list(
-        self, userlist: List[str], highlight_match: bool = False
-    ) -> None:
+    def refresh_user_list(self) -> None:
         self._clear_list_widget()
 
-        for user_name in sorted(userlist):
+        for user_name in self.users:
             amount_in_cent = self.user_amount_map[user_name]
             self.add_item_in_list_widget(
                 title=user_name, user_name=user_name, amount_in_cent=amount_in_cent
             )
 
-        if len(userlist) <= 1:
+        if len(self.users) <= 1:
             self.frame_letters.setEnabled(False)
         else:
             self.frame_letters.setEnabled(True)
@@ -73,7 +71,7 @@ class StartPage(QWizardPage, Ui_StartPage):
         if len(matched_user_names) <= 1:
             self.frame_letters.setEnabled(False)
 
-        for user_name in sorted(matched_user_names):
+        for user_name in matched_user_names:
             matched_letters = []
             pattern_letters = [letter for letter in self.lineEdit.text()]
 
