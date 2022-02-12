@@ -17,7 +17,7 @@ class Ui_StartPage(object):
     def setupUi(self, StartPage):
         if not StartPage.objectName():
             StartPage.setObjectName(u"StartPage")
-        StartPage.resize(816, 598)
+        StartPage.resize(649, 476)
         StartPage.setStyleSheet(u"")
         self.verticalLayout_2 = QVBoxLayout(StartPage)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
@@ -48,7 +48,7 @@ class Ui_StartPage(object):
 
         self.verticalLayout_2.addWidget(self.label_year)
 
-        self.verticalSpacer = QSpacerItem(0, 9, QSizePolicy.Minimum, QSizePolicy.MinimumExpanding)
+        self.verticalSpacer = QSpacerItem(0, 8, QSizePolicy.Minimum, QSizePolicy.MinimumExpanding)
 
         self.verticalLayout_2.addItem(self.verticalSpacer)
 
@@ -358,8 +358,8 @@ class Ui_StartPage(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.lineEdit.sizePolicy().hasHeightForWidth())
         self.lineEdit.setSizePolicy(sizePolicy)
-        self.lineEdit.setMinimumSize(QSize(450, 0))
-        self.lineEdit.setMaximumSize(QSize(450, 30))
+        self.lineEdit.setMinimumSize(QSize(419, 0))
+        self.lineEdit.setMaximumSize(QSize(419, 30))
         self.lineEdit.setFont(font2)
         self.lineEdit.setFocusPolicy(Qt.NoFocus)
         self.lineEdit.setStyleSheet(u"color: red;")
@@ -374,8 +374,8 @@ class Ui_StartPage(object):
         self.pushButton_clear = QPushButton(self.frame)
         self.pushButton_clear.setObjectName(u"pushButton_clear")
         self.pushButton_clear.setEnabled(False)
-        self.pushButton_clear.setMinimumSize(QSize(75, 30))
-        self.pushButton_clear.setMaximumSize(QSize(75, 40))
+        self.pushButton_clear.setMinimumSize(QSize(70, 30))
+        self.pushButton_clear.setMaximumSize(QSize(70, 40))
         font3 = QFont()
         font3.setPointSize(14)
         self.pushButton_clear.setFont(font3)
@@ -390,7 +390,7 @@ class Ui_StartPage(object):
 
         self.verticalLayout_4.addLayout(self.horizontalLayout_4)
 
-        self.verticalSpacer_5 = QSpacerItem(0, 25, QSizePolicy.Minimum, QSizePolicy.Fixed)
+        self.verticalSpacer_5 = QSpacerItem(0, 15, QSizePolicy.Minimum, QSizePolicy.Fixed)
 
         self.verticalLayout_4.addItem(self.verticalSpacer_5)
 
@@ -418,8 +418,11 @@ class Ui_StartPage(object):
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.listWidget.sizePolicy().hasHeightForWidth())
         self.listWidget.setSizePolicy(sizePolicy1)
-        self.listWidget.setMinimumSize(QSize(533, 160))
-        self.listWidget.setFont(font2)
+        self.listWidget.setMinimumSize(QSize(497, 165))
+        self.listWidget.setMaximumSize(QSize(497, 16777215))
+        font4 = QFont()
+        font4.setPointSize(18)
+        self.listWidget.setFont(font4)
         self.listWidget.setFocusPolicy(Qt.NoFocus)
         self.listWidget.setStyleSheet(u"QListWidget\n"
 "{\n"
@@ -440,6 +443,7 @@ class Ui_StartPage(object):
 "}")
         self.listWidget.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
         self.listWidget.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.listWidget.setSizeAdjustPolicy(QAbstractScrollArea.AdjustIgnored)
         self.listWidget.setSelectionMode(QAbstractItemView.SingleSelection)
         self.listWidget.setSelectionBehavior(QAbstractItemView.SelectItems)
         self.listWidget.setSpacing(6)
@@ -456,7 +460,7 @@ class Ui_StartPage(object):
 
         self.verticalLayout_2.addLayout(self.horizontalLayout)
 
-        self.verticalSpacer_2 = QSpacerItem(0, 5, QSizePolicy.Minimum, QSizePolicy.MinimumExpanding)
+        self.verticalSpacer_2 = QSpacerItem(0, 4, QSizePolicy.Minimum, QSizePolicy.MinimumExpanding)
 
         self.verticalLayout_2.addItem(self.verticalSpacer_2)
 

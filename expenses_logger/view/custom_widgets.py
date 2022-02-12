@@ -30,6 +30,7 @@ class ListItem(QWidget):
         
         amount_str = f"{amount_in_cent / 100:.2f} €"
         """
+
         amount_str = cents_to_euro(amount_in_cent)
         amount_str_label = QLabel(amount_str)
 

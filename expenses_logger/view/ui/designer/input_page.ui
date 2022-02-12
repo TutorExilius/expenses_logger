@@ -95,6 +95,9 @@
            <pointsize>18</pointsize>
           </font>
          </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string>Name</string>
          </property>

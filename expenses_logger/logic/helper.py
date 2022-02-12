@@ -46,18 +46,31 @@ def amount_in_cents_to_str(amount_in_cents: int) -> str:
     return amount + " €"
 
 
-async def sync_database(soure_database_file: Path, target_database_file: Path) -> None:
+def copy_database(soure_database_file: Path, target_database: Path) -> None:
+    print("Try syncing database...")
+    loop = asyncio.get_event_loop()
+    loop.create_task(sync_database(soure_database_file, target_database))
+
+
+def sync_copy_database(soure_database_file: Path, target_database: Path) -> None:
+    print("Try syncing database...")
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(sync_database(soure_database_file, target_database))
+
+
+async def sync_database(soure_database_file: Path, target_database: Path) -> None:
     if not soure_database_file.is_file():
         raise FileNotFoundError(f"File not found '{soure_database_file}'")
 
-    if not target_database_file.is_dir():
-        raise NotADirectoryError(f"Directory not found '{soure_database_file}'")
+    target_database_dir = target_database.absolute().parent
+    if not target_database_dir.is_dir():
+        raise NotADirectoryError(f"Directory not found '{target_database_dir}'")
 
     async with in_syncing_lock:
         while True:
             try:
                 async with async_open(soure_database_file, "rb") as src, async_open(
-                    target_database_file / globals.DATABASE_FILE, "wb"
+                    target_database, "wb"
                 ) as dest:
                     async for chunk in src.iter_chunked(65535):
                         await dest.write(chunk)

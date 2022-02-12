@@ -1,18 +1,20 @@
 import asyncio
 import sys
 from typing import List
+from pathlib import Path
+from datetime import datetime
 
 from asyncqt import QEventLoop
-from expenses_logger.globals import USERS
+from expenses_logger.globals import USERS, DATABASE_FILE, SYNC_NAS_DIR
 from expenses_logger.logic.database import (
     empty_database,
     get_user_names,
     initialize_new_users,
 )
+from expenses_logger.logic.helper import sync_copy_database
 from expenses_logger.view.create_new_database_dialog import CreateNewDatabaseDialog
 from expenses_logger.view.non_ascii_names_dialog import NonAsciiNamesDialog
 from expenses_logger.view.main_wizard import MainWizard
-from PySide2.QtCore import QSize
 from PySide2.QtWidgets import QApplication
 
 
@@ -54,6 +56,13 @@ def main() -> None:
         dialog.exec()
 
         if CreateNewDatabaseDialog.is_last_response_yes:
+            src_database = Path(__file__).parent.parent / DATABASE_FILE
+            today = datetime.utcnow()
+            target_database = (
+                Path(SYNC_NAS_DIR)
+                / f"{today.strftime('%Y.%m.%d_%H%Mutc')}__FINAL__{DATABASE_FILE}"
+            )
+            sync_copy_database(src_database, target_database)
             empty_database()
             initialize_new_users(USERS)
         else:
@@ -61,10 +70,8 @@ def main() -> None:
 
     mainWindow = MainWizard(user_names=USERS, parent=None, desktop_size=None)
     mainWindow.move(screenrect.left(), screenrect.top())
-    mainWindow.setFixedSize(QSize(800, 480))
-    mainWindow.show()
-    # mainWindow.showFullScreen()
-    # mainWindow.activateWindow()
+    mainWindow.showFullScreen()
+    mainWindow.activateWindow()
 
     with loop:
         sys.exit(loop.run_forever())

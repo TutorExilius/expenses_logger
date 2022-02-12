@@ -1,6 +1,6 @@
 from expenses_logger.view.ui.ui_remove_entries_dialog import Ui_RemoveEntriesDialog
-from PySide2.QtWidgets import QDialog, QWizard
 from PySide2.QtCore import Qt
+from PySide2.QtWidgets import QDialog, QWizard
 
 
 class RemoveEntriesDialog(QDialog, Ui_RemoveEntriesDialog):

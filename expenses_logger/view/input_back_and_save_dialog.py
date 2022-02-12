@@ -1,8 +1,8 @@
 from expenses_logger.view.ui.ui_input_back_and_save_dialog import (
     Ui_InputBackAndSaveDialog,
 )
-from PySide2.QtWidgets import QDialog, QWizard
 from PySide2.QtCore import Qt
+from PySide2.QtWidgets import QDialog, QWizard
 
 
 class InputBackAndSaveDialog(QDialog, Ui_InputBackAndSaveDialog):

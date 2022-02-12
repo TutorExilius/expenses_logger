@@ -40,16 +40,15 @@ class StartPage(QWizardPage, Ui_StartPage):
 
         self.lineEdit.mousePressEvent = self.set_cursor_to_end
 
-        # partial(self.button_clicked, False, user_names[0]))
-        # self.pushButton_name_2.clicked.connect(partial
-        # (self.button_clicked, False, user_names[1]))
-
     def reload_user_amounts(self) -> None:
         self.user_amount_map = get_user_amounts()
 
     def line_edit_clear(self) -> None:
         self.lineEdit.clear()
         self.pushButton_clear.setEnabled(False)
+        self.refresh_user_list(self.users)
+
+    def update_ui(self) -> None:
         self.refresh_user_list(self.users)
 
     def refresh_user_list(

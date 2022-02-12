@@ -49,6 +49,7 @@ class Ui_InputPage(object):
         font1 = QFont()
         font1.setPointSize(18)
         self.label_name.setFont(font1)
+        self.label_name.setStyleSheet(u"")
 
         self.horizontalLayout_5.addWidget(self.label_name)
 

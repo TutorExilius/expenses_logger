@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>816</width>
-    <height>598</height>
+    <width>649</width>
+    <height>476</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -81,7 +81,7 @@
      <property name="sizeHint" stdset="0">
       <size>
        <width>0</width>
-       <height>9</height>
+       <height>8</height>
       </size>
      </property>
     </spacer>
@@ -975,13 +975,13 @@
             </property>
             <property name="minimumSize">
              <size>
-              <width>450</width>
+              <width>419</width>
               <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>450</width>
+              <width>419</width>
               <height>30</height>
              </size>
             </property>
@@ -1027,13 +1027,13 @@
             </property>
             <property name="minimumSize">
              <size>
-              <width>75</width>
+              <width>70</width>
               <height>30</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>75</width>
+              <width>70</width>
               <height>40</height>
              </size>
             </property>
@@ -1079,7 +1079,7 @@
           <property name="sizeHint" stdset="0">
            <size>
             <width>0</width>
-            <height>25</height>
+            <height>15</height>
            </size>
           </property>
          </spacer>
@@ -1125,13 +1125,19 @@
          </property>
          <property name="minimumSize">
           <size>
-           <width>533</width>
-           <height>160</height>
+           <width>497</width>
+           <height>165</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>497</width>
+           <height>16777215</height>
           </size>
          </property>
          <property name="font">
           <font>
-           <pointsize>16</pointsize>
+           <pointsize>18</pointsize>
           </font>
          </property>
          <property name="focusPolicy">
@@ -1161,6 +1167,9 @@ width: 25px;
          </property>
          <property name="horizontalScrollBarPolicy">
           <enum>Qt::ScrollBarAlwaysOff</enum>
+         </property>
+         <property name="sizeAdjustPolicy">
+          <enum>QAbstractScrollArea::AdjustIgnored</enum>
          </property>
          <property name="selectionMode">
           <enum>QAbstractItemView::SingleSelection</enum>
@@ -1201,7 +1210,7 @@ width: 25px;
      <property name="sizeHint" stdset="0">
       <size>
        <width>0</width>
-       <height>5</height>
+       <height>4</height>
       </size>
      </property>
     </spacer>

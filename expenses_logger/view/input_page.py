@@ -1,22 +1,11 @@
-"""
-from functools import partial
-from pathlib import Path
-
-from PyQt5 import uic
-from PyQt5.QtCore import pyqtSignal, QCoreApplication
-from PyQt5.QtWidgets import QListWidgetItem, QWizard, QWizardPage
-from src.logic.helper import max_digits_behind_comma_arrived
-from src.view.input_back_and_save_dialog import InputBackAndSaveDialog
-from src.view.input_back_dialog import InputBackDialog
-from src.view.remove_entries_dialog import RemoveEntriesDialog
-"""
 from functools import partial
 
 from expenses_logger.logic.helper import (
+    cents_to_euro,
     max_digits_behind_comma_arrived,
     remove_leading_zeros,
-    cents_to_euro,
 )
+from expenses_logger.view.input_back_and_save_dialog import InputBackAndSaveDialog
 from expenses_logger.view.input_back_dialog import InputBackDialog
 from expenses_logger.view.remove_entries_dialog import RemoveEntriesDialog
 from expenses_logger.view.ui.ui_input_page import Ui_InputPage
@@ -37,123 +26,59 @@ class InputPage(QWizardPage, Ui_InputPage):
         self.pushButton_back.clicked.connect(
             self.back_button_clicked, Qt.UniqueConnection
         )
+        self.pushButton_save_back.clicked.connect(
+            self.back_and_save_button_clicked, Qt.UniqueConnection
+        )
         self.pushButton_0.clicked.connect(
-            partial(self.lineEdit_input_digit, False, "0")
+            partial(self.lineEdit_input_digit, False, "0"), Qt.UniqueConnection
         )
         self.pushButton_1.clicked.connect(
-            partial(self.lineEdit_input_digit, False, "1")
+            partial(self.lineEdit_input_digit, False, "1"), Qt.UniqueConnection
         )
         self.pushButton_2.clicked.connect(
-            partial(self.lineEdit_input_digit, False, "2")
+            partial(self.lineEdit_input_digit, False, "2"), Qt.UniqueConnection
         )
         self.pushButton_3.clicked.connect(
-            partial(self.lineEdit_input_digit, False, "3")
+            partial(self.lineEdit_input_digit, False, "3"), Qt.UniqueConnection
         )
         self.pushButton_4.clicked.connect(
-            partial(self.lineEdit_input_digit, False, "4")
+            partial(self.lineEdit_input_digit, False, "4"), Qt.UniqueConnection
         )
         self.pushButton_5.clicked.connect(
-            partial(self.lineEdit_input_digit, False, "5")
+            partial(self.lineEdit_input_digit, False, "5"), Qt.UniqueConnection
         )
         self.pushButton_6.clicked.connect(
-            partial(self.lineEdit_input_digit, False, "6")
+            partial(self.lineEdit_input_digit, False, "6"), Qt.UniqueConnection
         )
         self.pushButton_7.clicked.connect(
-            partial(self.lineEdit_input_digit, False, "7")
+            partial(self.lineEdit_input_digit, False, "7"), Qt.UniqueConnection
         )
         self.pushButton_8.clicked.connect(
-            partial(self.lineEdit_input_digit, False, "8")
+            partial(self.lineEdit_input_digit, False, "8"), Qt.UniqueConnection
         )
         self.pushButton_9.clicked.connect(
-            partial(self.lineEdit_input_digit, False, "9")
+            partial(self.lineEdit_input_digit, False, "9"), Qt.UniqueConnection
         )
         self.pushButton_comma.clicked.connect(
-            partial(self.lineEdit_input_digit, False, ",")
+            partial(self.lineEdit_input_digit, False, ","), Qt.UniqueConnection
         )
         self.pushButton_del.clicked.connect(
-            partial(self.lineEdit_input_digit, False, "DEL")
+            partial(self.lineEdit_input_digit, False, "DEL"), Qt.UniqueConnection
         )
-        self.pushButton_add.clicked.connect(self.add_entry_to_list)
-        self.pushButton_clear.clicked.connect(self.delete_input)
+        self.pushButton_add.clicked.connect(self.add_entry_to_list, Qt.UniqueConnection)
+        self.pushButton_clear.clicked.connect(self.delete_input, Qt.UniqueConnection)
         self.pushButton_remove_selected_items.clicked.connect(
-            self.remove_selected_items
+            self.remove_selected_items, Qt.UniqueConnection
         )
         self.listWidget_inputs.itemSelectionChanged.connect(
-            self.entries_selection_changed
+            self.entries_selection_changed, Qt.UniqueConnection
         )
-        self.listWidget_inputs.model().rowsRemoved.connect(self.entries_changed)
-        self.listWidget_inputs.model().rowsInserted.connect(self.entries_changed)
-
-        """
-        self.pushButton_save_back.clicked.connect(self.back_and_save_button_clicked)
-
-
-       
-        self.pushButton_0.clicked.connect(
-            partial(self.lineEdit_input_digit, False, "0")
+        self.listWidget_inputs.model().rowsRemoved.connect(
+            self.entries_changed, Qt.UniqueConnection
         )
-        self.pushButton_1.clicked.connect(
-            partial(self.lineEdit_input_digit, False, "1")
+        self.listWidget_inputs.model().rowsInserted.connect(
+            self.entries_changed, Qt.UniqueConnection
         )
-        self.pushButton_2.clicked.connect(
-            partial(self.lineEdit_input_digit, False, "2")
-        )
-        self.pushButton_3.clicked.connect(
-            partial(self.lineEdit_input_digit, False, "3")
-        )
-        self.pushButton_4.clicked.connect(
-            partial(self.lineEdit_input_digit, False, "4")
-        )
-        self.pushButton_5.clicked.connect(
-            partial(self.lineEdit_input_digit, False, "5")
-        )
-        self.pushButton_6.clicked.connect(
-            partial(self.lineEdit_input_digit, False, "6")
-        )
-        self.pushButton_7.clicked.connect(
-            partial(self.lineEdit_input_digit, False, "7")
-        )
-        self.pushButton_8.clicked.connect(
-            partial(self.lineEdit_input_digit, False, "8")
-        )
-        self.pushButton_9.clicked.connect(
-            partial(self.lineEdit_input_digit, False, "9")
-        )
-        self.pushButton_comma.clicked.connect(
-            partial(self.lineEdit_input_digit, False, ",")
-        )
-        self.pushButton_del.clicked.connect(
-            partial(self.lineEdit_input_digit, False, "DEL")
-        )
-        self.pushButton_add.clicked.connect(self.add_entry_to_list)
-        self.pushButton_clear.clicked.connect(self.delete_input)
-
-   
-    def delete_entries(self):
-        self.listWidget_inputs.clear()
-        self.label_total_amount.setText("0,00 €")
-        self.pushButton_save_back.setEnabled(False)
-
-   
- 
-
-
-    def back_and_save_button_clicked(self):
-        dialog = InputBackAndSaveDialog(self)
-        dialog.exec()
-
-        if InputBackAndSaveDialog.is_last_response_yes:
-            QCoreApplication.processEvents()
-
-            name = self.label_name.text()
-            self.leave_input_page.emit(name, self.label_total_amount.text())
-
-   
-
-    
-
-
-"""
 
     @Slot(bool, str)
     def lineEdit_input_digit(self, _: bool, digit: str) -> None:
@@ -193,6 +118,16 @@ class InputPage(QWizardPage, Ui_InputPage):
         else:
             self.pushButton_del.setEnabled(False)
             self.pushButton_add.setEnabled(False)
+
+    def back_and_save_button_clicked(self) -> None:
+        dialog = InputBackAndSaveDialog(self)
+        dialog.exec()
+
+        if InputBackAndSaveDialog.is_last_response_yes:
+            QCoreApplication.processEvents()
+
+            name = self.label_name.text()
+            self.leave_input_page.emit(name, self.label_total_amount.text())
 
     def entries_changed(self) -> None:
         if self.listWidget_inputs.count():
