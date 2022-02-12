@@ -17,7 +17,7 @@ class Ui_StartPage(object):
     def setupUi(self, StartPage):
         if not StartPage.objectName():
             StartPage.setObjectName(u"StartPage")
-        StartPage.resize(816, 601)
+        StartPage.resize(816, 598)
         StartPage.setStyleSheet(u"")
         self.verticalLayout_2 = QVBoxLayout(StartPage)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
@@ -418,10 +418,16 @@ class Ui_StartPage(object):
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.listWidget.sizePolicy().hasHeightForWidth())
         self.listWidget.setSizePolicy(sizePolicy1)
-        self.listWidget.setMinimumSize(QSize(533, 150))
+        self.listWidget.setMinimumSize(QSize(533, 160))
         self.listWidget.setFont(font2)
         self.listWidget.setFocusPolicy(Qt.NoFocus)
-        self.listWidget.setStyleSheet(u"QListWidget:item\n"
+        self.listWidget.setStyleSheet(u"QListWidget\n"
+"{\n"
+"padding: 5px;\n"
+"background-color: white;\n"
+"}\n"
+"\n"
+"QListWidget:item\n"
 "{\n"
 "padding: 1px 8px;\n"
 "background-color: #eaefff;\n"

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>816</width>
-    <height>601</height>
+    <height>598</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -1126,7 +1126,7 @@
          <property name="minimumSize">
           <size>
            <width>533</width>
-           <height>150</height>
+           <height>160</height>
           </size>
          </property>
          <property name="font">
@@ -1138,7 +1138,13 @@
           <enum>Qt::NoFocus</enum>
          </property>
          <property name="styleSheet">
-          <string notr="true">QListWidget:item
+          <string notr="true">QListWidget
+{
+padding: 5px;
+background-color: white;
+}
+
+QListWidget:item
 {
 padding: 1px 8px;
 background-color: #eaefff;
