@@ -1,32 +1,52 @@
-import sys
 import asyncio
-from expenses_logger.globals import USERS
+import sys
+from typing import List
 
 from asyncqt import QEventLoop
-from PySide2.QtWidgets import QApplication
-from PySide2.QtCore import QSize
-
-from expenses_logger.view.main_wizard import MainWizard
-from expenses_logger.view.create_new_database_dialog import CreateNewDatabaseDialog
+from expenses_logger.globals import USERS
 from expenses_logger.logic.database import (
-    get_user_names,
     empty_database,
+    get_user_names,
     initialize_new_users,
 )
+from expenses_logger.view.create_new_database_dialog import CreateNewDatabaseDialog
+from expenses_logger.view.non_ascii_names_dialog import NonAsciiNamesDialog
+from expenses_logger.view.main_wizard import MainWizard
+from PySide2.QtCore import QSize
+from PySide2.QtWidgets import QApplication
+
+
+def valid_users_names(user_names: List[str]) -> bool:
+    allowed_characters = "abcdefghijklmnopqrstuvwxyz0123456789- '"
+
+    for user_name in user_names:
+        lowered_user_name = user_name.strip().lower()
+        tmp = all([ch in allowed_characters for ch in lowered_user_name])
+        if not tmp:
+            print("Invalid user_name in Config:", user_name)
+            return False
+
+    return True
 
 
 def main() -> None:
     app = QApplication(sys.argv)
     loop = QEventLoop(app)
     asyncio.set_event_loop(loop)
-
-    # DB creation / verification (USERS==db_users?)
-    config_users = set(USERS)
-    db_users = set(get_user_names())
-
     screenrect = app.primaryScreen().geometry()
 
-    if config_users != db_users:
+    if not valid_users_names(USERS):
+        dialog = NonAsciiNamesDialog()
+        x = (screenrect.width() - dialog.width()) / 2
+        y = (screenrect.height() - dialog.height()) / 2
+        dialog.move(x, y)
+        dialog.exec()
+        exit()
+
+    db_users = get_user_names()
+
+    # user names changed? -> create new database
+    if set(db_users) != set(USERS):
         dialog = CreateNewDatabaseDialog()
         x = (screenrect.width() - dialog.width()) / 2
         y = (screenrect.height() - dialog.height()) / 2
@@ -38,10 +58,6 @@ def main() -> None:
             initialize_new_users(USERS)
         else:
             exit()
-
-        pass  # start dialog here. delete database and create new one with new users?
-        # YES -> emptry_db + create_users + start app
-        # No -> close app
 
     mainWindow = MainWizard(user_names=USERS, parent=None, desktop_size=None)
     mainWindow.move(screenrect.left(), screenrect.top())
