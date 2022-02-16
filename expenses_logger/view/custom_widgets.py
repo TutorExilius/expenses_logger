@@ -14,12 +14,13 @@ from PySide2.QtWidgets import (
 class CustomQDialog(QDialog):
     def __init__(self, parent: QWizard):
         super().__init__(parent)
-
-        self.setWindowFlag(Qt.WindowMinimizeButtonHint, False)
         self.setWindowFlag(Qt.WindowCloseButtonHint, False)
-        self.setWindowFlag(Qt.WindowMinMaxButtonsHint, False)
         self.setWindowFlag(Qt.WindowContextHelpButtonHint, False)
+        self.setWindowFlag(Qt.WindowMinMaxButtonsHint, False)
+        self.setWindowFlag(Qt.WindowMinimizeButtonHint, False)
+        self.setWindowFlag(Qt.WindowMaximizeButtonHint, False)
         self.setWindowFlag(Qt.WindowStaysOnTopHint, True)
+        self.setWindowTitle("")
 
 
 class ListItem(QWidget):
