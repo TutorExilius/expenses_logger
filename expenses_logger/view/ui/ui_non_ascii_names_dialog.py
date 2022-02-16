@@ -17,7 +17,7 @@ class Ui_NonAsciiNamesDialog(object):
     def setupUi(self, NonAsciiNamesDialog):
         if not NonAsciiNamesDialog.objectName():
             NonAsciiNamesDialog.setObjectName(u"NonAsciiNamesDialog")
-        NonAsciiNamesDialog.setWindowModality(Qt.NonModal)
+        NonAsciiNamesDialog.setWindowModality(Qt.ApplicationModal)
         NonAsciiNamesDialog.resize(520, 280)
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)

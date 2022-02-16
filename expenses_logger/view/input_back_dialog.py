@@ -1,19 +1,15 @@
+from expenses_logger.view.custom_widgets import CustomQDialog
 from expenses_logger.view.ui.ui_input_back_dialog import Ui_InputBackDialog
+from PySide2.QtWidgets import QWizard
 from PySide2.QtCore import Qt
-from PySide2.QtWidgets import QDialog, QWizard
 
 
-class InputBackDialog(QDialog, Ui_InputBackDialog):
+class InputBackDialog(CustomQDialog, Ui_InputBackDialog):
     is_last_response_yes = False
 
     def __init__(self, parent: QWizard) -> None:
-        QDialog.__init__(self, parent)
+        CustomQDialog.__init__(self, parent)
         self.setupUi(self)
-
-        self.setWindowFlag(Qt.WindowMinimizeButtonHint, False)
-        self.setWindowFlag(Qt.WindowCloseButtonHint, False)
-        self.setWindowFlag(Qt.WindowMinMaxButtonsHint, False)
-        self.setWindowFlag(Qt.FramelessWindowHint, True)
 
         # connections
         self.pushButton_yes.clicked.connect(self.response_yes, Qt.UniqueConnection)

@@ -17,7 +17,7 @@ class Ui_RemoveEntriesDialog(object):
     def setupUi(self, RemoveEntriesDialog):
         if not RemoveEntriesDialog.objectName():
             RemoveEntriesDialog.setObjectName(u"RemoveEntriesDialog")
-        RemoveEntriesDialog.setWindowModality(Qt.NonModal)
+        RemoveEntriesDialog.setWindowModality(Qt.ApplicationModal)
         RemoveEntriesDialog.resize(470, 200)
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)

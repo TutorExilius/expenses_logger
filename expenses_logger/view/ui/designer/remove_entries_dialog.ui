@@ -3,7 +3,7 @@
  <class>RemoveEntriesDialog</class>
  <widget class="QDialog" name="RemoveEntriesDialog">
   <property name="windowModality">
-   <enum>Qt::NonModal</enum>
+   <enum>Qt::ApplicationModal</enum>
   </property>
   <property name="geometry">
    <rect>

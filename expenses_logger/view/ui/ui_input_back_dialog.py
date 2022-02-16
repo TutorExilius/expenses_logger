@@ -17,7 +17,7 @@ class Ui_InputBackDialog(object):
     def setupUi(self, InputBackDialog):
         if not InputBackDialog.objectName():
             InputBackDialog.setObjectName(u"InputBackDialog")
-        InputBackDialog.setWindowModality(Qt.NonModal)
+        InputBackDialog.setWindowModality(Qt.ApplicationModal)
         InputBackDialog.resize(470, 200)
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)

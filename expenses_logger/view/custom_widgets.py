@@ -1,5 +1,25 @@
 from expenses_logger.logic.helper import cents_to_euro
-from PySide2.QtWidgets import QHBoxLayout, QLabel, QSizePolicy, QSpacerItem, QWidget
+from PySide2.QtCore import Qt
+from PySide2.QtWidgets import (
+    QDialog,
+    QHBoxLayout,
+    QLabel,
+    QSizePolicy,
+    QSpacerItem,
+    QWidget,
+    QWizard,
+)
+
+
+class CustomQDialog(QDialog):
+    def __init__(self, parent: QWizard):
+        super().__init__(parent)
+
+        self.setWindowFlag(Qt.WindowMinimizeButtonHint, False)
+        self.setWindowFlag(Qt.WindowCloseButtonHint, False)
+        self.setWindowFlag(Qt.WindowMinMaxButtonsHint, False)
+        self.setWindowFlag(Qt.WindowContextHelpButtonHint, False)
+        self.setWindowFlag(Qt.WindowStaysOnTopHint, True)
 
 
 class ListItem(QWidget):

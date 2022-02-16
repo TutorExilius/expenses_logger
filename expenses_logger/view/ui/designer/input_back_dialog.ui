@@ -3,7 +3,7 @@
  <class>InputBackDialog</class>
  <widget class="QDialog" name="InputBackDialog">
   <property name="windowModality">
-   <enum>Qt::NonModal</enum>
+   <enum>Qt::ApplicationModal</enum>
   </property>
   <property name="geometry">
    <rect>

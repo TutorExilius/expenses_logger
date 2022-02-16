@@ -17,7 +17,7 @@ class Ui_CreateNewDatabaseDialog(object):
     def setupUi(self, CreateNewDatabaseDialog):
         if not CreateNewDatabaseDialog.objectName():
             CreateNewDatabaseDialog.setObjectName(u"CreateNewDatabaseDialog")
-        CreateNewDatabaseDialog.setWindowModality(Qt.NonModal)
+        CreateNewDatabaseDialog.setWindowModality(Qt.ApplicationModal)
         CreateNewDatabaseDialog.resize(520, 280)
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
